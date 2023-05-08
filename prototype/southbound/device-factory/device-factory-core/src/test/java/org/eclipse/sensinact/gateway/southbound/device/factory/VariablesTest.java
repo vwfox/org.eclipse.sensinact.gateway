@@ -20,7 +20,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.Arrays;
 import java.util.Map;
 
-import org.eclipse.sensinact.gateway.southbound.device.factory.impl.VariableSolver;
 import org.junit.jupiter.api.Test;
 
 /**

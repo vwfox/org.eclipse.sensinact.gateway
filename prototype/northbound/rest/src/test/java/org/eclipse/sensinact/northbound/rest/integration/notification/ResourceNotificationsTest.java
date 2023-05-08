@@ -24,8 +24,8 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 import org.eclipse.jetty.util.BlockingArrayQueue;
-import org.eclipse.sensinact.northbound.query.dto.notification.ResourceDataNotificationDTO;
-import org.eclipse.sensinact.northbound.query.dto.notification.ResourceLifecycleNotificationDTO;
+import org.eclipse.sensinact.northbound.rest.dto.notification.ResourceDataNotificationDTO;
+import org.eclipse.sensinact.northbound.rest.dto.notification.ResourceLifecycleNotificationDTO;
 import org.eclipse.sensinact.northbound.rest.integration.TestUtils;
 import org.eclipse.sensinact.prototype.PrototypePush;
 import org.eclipse.sensinact.prototype.SensiNactSession;
@@ -33,60 +33,24 @@ import org.eclipse.sensinact.prototype.SensiNactSessionManager;
 import org.eclipse.sensinact.prototype.generic.dto.GenericDto;
 import org.eclipse.sensinact.prototype.notification.LifecycleNotification;
 import org.eclipse.sensinact.prototype.notification.ResourceDataNotification;
-import org.eclipse.sensinact.prototype.security.UserInfo;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.opentest4j.AssertionFailedError;
-import org.osgi.service.cm.Configuration;
 import org.osgi.service.jakartars.client.SseEventSourceFactory;
 import org.osgi.test.common.annotation.InjectService;
-import org.osgi.test.common.annotation.Property;
-import org.osgi.test.common.annotation.config.InjectConfiguration;
-import org.osgi.test.common.annotation.config.WithConfiguration;
-import org.osgi.test.common.service.ServiceAware;
-import org.osgi.test.junit5.cm.ConfigurationExtension;
 import org.osgi.test.junit5.service.ServiceExtension;
 
 import com.fasterxml.jackson.jakarta.rs.json.JacksonJsonProvider;
 
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
-import jakarta.ws.rs.core.Application;
 import jakarta.ws.rs.sse.SseEventSource;
 
-@ExtendWith({ ServiceExtension.class, ConfigurationExtension.class })
+@ExtendWith(ServiceExtension.class)
 public class ResourceNotificationsTest {
 
-    @BeforeEach
-    public void await(
-            @InjectConfiguration(withConfig = @WithConfiguration(pid = "sensinact.northbound.rest", location = "?", properties = {
-                    @Property(key = "allow.anonymous", value = "true"),
-                    @Property(key = "buzz", value = "fizzbuzz") })) Configuration cm,
-            @InjectService(filter = "(buzz=fizzbuzz)", cardinality = 0) ServiceAware<Application> a)
-            throws InterruptedException {
-        a.waitForService(5000);
-        for (int i = 0; i < 10; i++) {
-            try {
-                if (utils.queryStatus("/").statusCode() == 200)
-                    return;
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            Thread.sleep(200);
-        }
-        throw new AssertionFailedError("REST API did not appear");
-    }
-
-    @AfterEach
-    public void clear(@InjectConfiguration("sensinact.northbound.rest") Configuration cm) throws Exception {
-        cm.delete();
-        Thread.sleep(500);
-    }
-
-    private static final UserInfo USER = UserInfo.ANONYMOUS;
+    private static final String USER = "user";
 
     private static final String PROVIDER = "RestNotificationProvider";
     private static final String PROVIDER_TOPIC = PROVIDER + "/*";

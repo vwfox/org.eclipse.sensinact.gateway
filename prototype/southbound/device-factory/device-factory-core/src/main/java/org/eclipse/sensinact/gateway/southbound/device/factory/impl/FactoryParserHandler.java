@@ -12,8 +12,6 @@
 **********************************************************************/
 package org.eclipse.sensinact.gateway.southbound.device.factory.impl;
 
-import static java.util.stream.Collectors.toMap;
-
 import java.time.DateTimeException;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -48,9 +46,14 @@ import org.eclipse.sensinact.gateway.southbound.device.factory.IPlaceHolderKeys;
 import org.eclipse.sensinact.gateway.southbound.device.factory.IResourceMapping;
 import org.eclipse.sensinact.gateway.southbound.device.factory.InvalidResourcePathException;
 import org.eclipse.sensinact.gateway.southbound.device.factory.MissingParserException;
+import org.eclipse.sensinact.gateway.southbound.device.factory.NamingUtils;
 import org.eclipse.sensinact.gateway.southbound.device.factory.ParserException;
 import org.eclipse.sensinact.gateway.southbound.device.factory.RecordPath;
+import org.eclipse.sensinact.gateway.southbound.device.factory.ResourceLiteralMapping;
+import org.eclipse.sensinact.gateway.southbound.device.factory.ResourceMappingHandler;
+import org.eclipse.sensinact.gateway.southbound.device.factory.ResourceRecordMapping;
 import org.eclipse.sensinact.gateway.southbound.device.factory.VariableNotFoundException;
+import org.eclipse.sensinact.gateway.southbound.device.factory.VariableSolver;
 import org.eclipse.sensinact.gateway.southbound.device.factory.dto.DeviceMappingConfigurationDTO;
 import org.eclipse.sensinact.gateway.southbound.device.factory.dto.DeviceMappingOptionsDTO;
 import org.eclipse.sensinact.prototype.PrototypePush;
@@ -163,8 +166,8 @@ public class FactoryParserHandler implements IDeviceMappingHandler, IPlaceHolder
     }
 
     @Override
-    public void handle(final DeviceMappingConfigurationDTO configuration, final Map<String, String> context,
-            final byte[] payload) throws DeviceFactoryException {
+    public void handle(final DeviceMappingConfigurationDTO configuration, final byte[] payload)
+            throws DeviceFactoryException {
 
         // Check parser ID
         final String parserId = configuration.parser;
@@ -173,7 +176,7 @@ public class FactoryParserHandler implements IDeviceMappingHandler, IPlaceHolder
         }
 
         // Extract mapping information
-        final RecordState globalState = computeInitialState(configuration, context);
+        final RecordState globalState = computeInitialState(configuration);
 
         // Check if a provider is set
         if (globalState.placeholders.get(KEY_PROVIDER) == null) {
@@ -361,11 +364,10 @@ public class FactoryParserHandler implements IDeviceMappingHandler, IPlaceHolder
      * Computes the list of place holders, variables and resource mapping
      *
      * @param configuration Device mapping configuration
-     * @param context
      * @return The global state
      * @throws InvalidResourcePathException Error parsing resource path
      */
-    private RecordState computeInitialState(DeviceMappingConfigurationDTO configuration, Map<String, String> context)
+    private RecordState computeInitialState(DeviceMappingConfigurationDTO configuration)
             throws InvalidResourcePathException {
         final Map<String, IResourceMapping> placeholders = new HashMap<>();
         final Map<String, IResourceMapping> variablesMappings = new HashMap<>();
@@ -402,8 +404,6 @@ public class FactoryParserHandler implements IDeviceMappingHandler, IPlaceHolder
         state.rawVariables = Map.copyOf(variablesMappings);
         state.rcMappings = List.copyOf(rcMappings);
         state.rcLiterals = List.copyOf(rcLiterals);
-        state.variables = Map.copyOf(
-                context.entrySet().stream().collect(toMap(e -> "$context.".concat(e.getKey()), Entry::getValue)));
         return state;
     }
 
@@ -424,7 +424,7 @@ public class FactoryParserHandler implements IDeviceMappingHandler, IPlaceHolder
         final RecordState state = new RecordState();
 
         // Resolve variables
-        state.variables = resolveVariables(configuration, record, initialState.variables, initialState.rawVariables);
+        state.variables = resolveVariables(configuration, record, initialState.rawVariables);
 
         // Replace values
         state.placeholders = fillInVariables(initialState.placeholders, state.variables);
@@ -474,14 +474,14 @@ public class FactoryParserHandler implements IDeviceMappingHandler, IPlaceHolder
      * @throws ParserException Error resolving variables
      */
     private Map<String, String> resolveVariables(final DeviceMappingConfigurationDTO configuration,
-            final IDeviceMappingRecord record, final Map<String, String> initialVariables,
-            final Map<String, IResourceMapping> rawVariables) throws ParserException {
+            final IDeviceMappingRecord record, final Map<String, IResourceMapping> rawVariables)
+            throws ParserException {
 
         final DeviceMappingOptionsDTO options = configuration.mappingOptions;
 
         Set<String> previouslyRemaining = new HashSet<>();
         final Set<String> remainingVars = new HashSet<>(rawVariables.keySet());
-        final Map<String, String> resolvedVars = new HashMap<>(initialVariables);
+        final Map<String, String> resolvedVars = new HashMap<>();
 
         while (!remainingVars.isEmpty()) {
             if (previouslyRemaining.equals(remainingVars)) {

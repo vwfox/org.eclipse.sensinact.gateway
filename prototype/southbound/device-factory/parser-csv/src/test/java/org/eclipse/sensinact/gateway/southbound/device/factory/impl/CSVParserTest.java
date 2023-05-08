@@ -150,7 +150,7 @@ public class CSVParserTest {
         byte[] fileContent = readFile("csv/csv-no-header.csv");
 
         // Apply mapping
-        deviceMapper.handle(config, Map.of(), fileContent);
+        deviceMapper.handle(config, fileContent);
 
         // CSV loads strings by default
         assertEquals("42", getResourceValue(provider1, "data", "value", String.class));
@@ -197,7 +197,7 @@ public class CSVParserTest {
         byte[] fileContent = readFile("csv/csv-header.csv");
 
         // Apply mapping
-        deviceMapper.handle(config, Map.of(), fileContent);
+        deviceMapper.handle(config, fileContent);
 
         // CSV loads strings by default
         assertEquals("42", getResourceValue(provider1, "data", "value", String.class));
@@ -244,7 +244,7 @@ public class CSVParserTest {
         byte[] fileContent = readFile("csv/csv-header-typed.csv");
 
         // Apply mapping
-        deviceMapper.handle(config, Map.of(), fileContent);
+        deviceMapper.handle(config, fileContent);
 
         // Ensure resource type
         assertEquals(42, getResourceValue(provider1, "data", "value", Integer.class));
@@ -294,8 +294,7 @@ public class CSVParserTest {
             String fileContent = new String(rawfileContent, StandardCharsets.UTF_8);
 
             // Apply mapping
-            deviceMapper.handle(config, Map.of(),
-                    fileContent.replace("typed-", "literal-").getBytes(StandardCharsets.UTF_8));
+            deviceMapper.handle(config, fileContent.replace("typed-", "literal-").getBytes(StandardCharsets.UTF_8));
         }
 
         // Ensure resource type

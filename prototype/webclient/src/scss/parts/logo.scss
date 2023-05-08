@@ -1,0 +1,29 @@
+@import "helper";
+.logo{
+  z-index: 6;
+  &.smart_city_project{
+    background-image: url(getAssetBranding('JENA_21_0000_Smart_City_Projekt_Logo_RZ.svg'));
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  &.smart_city{
+    background-image: url(getAssetBranding('JENA_21_0000_Smart_City_Logo_RZ.svg'));
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  &.fuenfg{
+    background-image: url(getAssetBranding('JENA_21_0000_Smart_City_5G_Verkehrsvernetzung_Logo_RZ.svg'));
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  &.lichtstadt{
+    background-image: url(getAssetBranding('jena-lichtstadt.svg'));
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    &.light{
+      background-image: url(getAssetBranding('jena-lichtstadt-light.svg'));
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+  }
+}

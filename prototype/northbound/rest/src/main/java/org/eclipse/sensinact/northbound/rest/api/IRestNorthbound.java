@@ -14,8 +14,19 @@ package org.eclipse.sensinact.northbound.rest.api;
 
 import static jakarta.ws.rs.core.MediaType.APPLICATION_JSON;
 
-import org.eclipse.sensinact.northbound.query.api.AbstractResultDTO;
-import org.eclipse.sensinact.northbound.query.dto.query.WrappedAccessMethodCallParametersDTO;
+import java.util.List;
+
+import org.eclipse.sensinact.northbound.rest.dto.AccessMethodCallParameterDTO;
+import org.eclipse.sensinact.northbound.rest.dto.CompleteResourceDescriptionDTO;
+import org.eclipse.sensinact.northbound.rest.dto.CompleteServiceDescriptionDTO;
+import org.eclipse.sensinact.northbound.rest.dto.GetResponse;
+import org.eclipse.sensinact.northbound.rest.dto.ProviderDescriptionDTO;
+import org.eclipse.sensinact.northbound.rest.dto.ResultActResponse;
+import org.eclipse.sensinact.northbound.rest.dto.ResultCompleteListDTO;
+import org.eclipse.sensinact.northbound.rest.dto.ResultProvidersListDTO;
+import org.eclipse.sensinact.northbound.rest.dto.ResultResourcesListDTO;
+import org.eclipse.sensinact.northbound.rest.dto.ResultServicesListDTO;
+import org.eclipse.sensinact.northbound.rest.dto.ResultTypedResponseDTO;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
@@ -32,51 +43,51 @@ public interface IRestNorthbound {
 
     @Path("")
     @GET
-    AbstractResultDTO describeProviders();
+    ResultCompleteListDTO describeProviders();
 
     @Path("providers")
     @GET
-    AbstractResultDTO listProviders();
+    ResultProvidersListDTO listProviders();
 
     @Path("providers/{providerId}")
     @GET
-    AbstractResultDTO describeProvider(@PathParam("providerId") String providerId);
+    ResultTypedResponseDTO<ProviderDescriptionDTO> describeProvider(@PathParam("providerId") String providerId);
 
     @Path("providers/{providerId}/services")
     @GET
-    AbstractResultDTO listServices(@PathParam("providerId") String providerId);
+    ResultServicesListDTO listServices(@PathParam("providerId") String providerId);
 
     @Path("providers/{providerId}/services/{serviceName}")
     @GET
-    AbstractResultDTO describeService(@PathParam("providerId") String providerId,
+    ResultTypedResponseDTO<CompleteServiceDescriptionDTO> describeService(@PathParam("providerId") String providerId,
             @PathParam("serviceName") String serviceName);
 
     @Path("providers/{providerId}/services/{serviceName}/resources")
     @GET
-    AbstractResultDTO listResources(@PathParam("providerId") String providerId,
+    ResultResourcesListDTO listResources(@PathParam("providerId") String providerId,
             @PathParam("serviceName") String serviceName);
 
     @Path("providers/{providerId}/services/{serviceName}/resources/{rcName}")
     @GET
-    AbstractResultDTO describeResource(@PathParam("providerId") String providerId,
+    ResultTypedResponseDTO<CompleteResourceDescriptionDTO> describeResource(@PathParam("providerId") String providerId,
             @PathParam("serviceName") String serviceName, @PathParam("rcName") String rcName);
 
     @Path("providers/{providerId}/services/{serviceName}/resources/{rcName}/GET")
     @GET
-    AbstractResultDTO resourceGet(@PathParam("providerId") String providerId,
+    <T> ResultTypedResponseDTO<GetResponse<T>> resourceGet(@PathParam("providerId") String providerId,
             @PathParam("serviceName") String serviceName, @PathParam("rcName") String rcName);
 
     @Path("providers/{providerId}/services/{serviceName}/resources/{rcName}/SET")
     @POST
-    AbstractResultDTO resourceSet(@PathParam("providerId") String providerId,
+    ResultTypedResponseDTO<GetResponse<?>> resourceSet(@PathParam("providerId") String providerId,
             @PathParam("serviceName") String serviceName, @PathParam("rcName") String rcName,
-            WrappedAccessMethodCallParametersDTO parameters);
+            List<AccessMethodCallParameterDTO> parameters);
 
     @Path("providers/{providerId}/services/{serviceName}/resources/{rcName}/ACT")
     @POST
-    AbstractResultDTO resourceAct(@PathParam("providerId") String providerId,
+    ResultActResponse<?> resourceAct(@PathParam("providerId") String providerId,
             @PathParam("serviceName") String serviceName, @PathParam("rcName") String rcName,
-            WrappedAccessMethodCallParametersDTO parameters);
+            List<AccessMethodCallParameterDTO> parameters);
 
     @Path("providers/{providerId}/services/{serviceName}/resources/{rcName}/SUBSCRIBE")
     @GET

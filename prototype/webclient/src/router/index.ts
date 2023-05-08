@@ -15,23 +15,29 @@ import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import Map from "@/views/Map.vue";
 import Tree from "@/components/Tree.vue";
+import DatastreamsV from "@/views/Datastreams.vue";
 
 Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
   {
-    path: '/',
+    path: '/details',
     name: 'map',
     component: Map,
     children:[{
       path: 'location/:id',
       component: Tree,
     }]
+  },
+  {
+    path: '/',
+    name: 'datastreams',
+    component: DatastreamsV,
   }
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: 'hash',
   base: process.env.BASE_URL,
   routes
 })

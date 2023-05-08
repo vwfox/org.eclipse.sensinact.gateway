@@ -21,7 +21,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.sensinact.northbound.filters.ldap.impl.LdapParser;
-import org.eclipse.sensinact.prototype.model.ResourceType;
 import org.eclipse.sensinact.prototype.snapshot.ICriterion;
 import org.eclipse.sensinact.prototype.snapshot.ProviderSnapshot;
 import org.eclipse.sensinact.prototype.snapshot.ResourceSnapshot;
@@ -117,11 +116,6 @@ public class LdapParserTest {
                         };
                     }
                 };
-            }
-
-            @Override
-            public ResourceType getResourceType() {
-                return ResourceType.PROPERTY;
             }
         };
     }

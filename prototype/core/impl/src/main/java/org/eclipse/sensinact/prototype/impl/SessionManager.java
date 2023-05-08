@@ -21,7 +21,7 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -29,7 +29,6 @@ import org.eclipse.sensinact.prototype.SensiNactSession;
 import org.eclipse.sensinact.prototype.SensiNactSessionManager;
 import org.eclipse.sensinact.prototype.command.GatewayThread;
 import org.eclipse.sensinact.prototype.notification.AbstractResourceNotification;
-import org.eclipse.sensinact.prototype.security.UserInfo;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.typedevent.TypedEventHandler;
@@ -51,14 +50,12 @@ public class SessionManager implements SensiNactSessionManager, TypedEventHandle
     private final Map<String, String> userDefaultSessionIds = new HashMap<>();
 
     @Override
-    public SensiNactSession getDefaultSession(UserInfo user) {
-        Objects.requireNonNull(user);
+    public SensiNactSession getDefaultSession(String userToken) {
         SensiNactSession session = null;
-        String userId = user.getUserId();
         String sessionId;
 
         synchronized (lock) {
-            sessionId = userDefaultSessionIds.get(userId);
+            sessionId = userDefaultSessionIds.get(userToken);
 
             if (sessionId != null) {
                 session = sessions.get(sessionId);
@@ -68,25 +65,25 @@ public class SessionManager implements SensiNactSessionManager, TypedEventHandle
         // Outside of lock to check/create the session
         if (session == null) {
             if (sessionId != null) {
-                removeSession(userId, sessionId);
+                removeSession(userToken, sessionId);
             }
 
-            session = createNewSession(user);
+            session = createNewSession(userToken);
             sessionId = session.getSessionId();
 
             synchronized (lock) {
-                sessionId = userDefaultSessionIds.putIfAbsent(userId, sessionId);
+                sessionId = userDefaultSessionIds.putIfAbsent(userToken, sessionId);
             }
 
             if (sessionId != null) {
                 // Someone beat us to the punch
-                removeSession(userId, session.getSessionId());
+                removeSession(userToken, session.getSessionId());
                 session.expire();
-                return getSession(user, sessionId);
+                return getSession(sessionId);
             }
         } else if (session.isExpired()) {
-            removeSession(userId, sessionId);
-            session = getDefaultSession(user);
+            removeSession(userToken, sessionId);
+            session = getDefaultSession(userToken);
         }
 
         return session;
@@ -96,29 +93,32 @@ public class SessionManager implements SensiNactSessionManager, TypedEventHandle
      * @param userToken
      * @param sessionId
      */
-    private void removeSession(String userId, String sessionId) {
+    private void removeSession(String userToken, String sessionId) {
         synchronized (lock) {
-            userDefaultSessionIds.remove(userId, sessionId);
-            sessionsByUser.computeIfPresent(userId,
+            if (userToken == null) {
+                for (Entry<String, Set<String>> e : sessionsByUser.entrySet()) {
+                    if (e.getValue().contains(sessionId)) {
+                        userToken = e.getKey();
+                        break;
+                    }
+                }
+            }
+            userDefaultSessionIds.remove(userToken, sessionId);
+            sessionsByUser.computeIfPresent(userToken,
                     (k, v) -> v.stream().filter(s -> !s.equals(sessionId)).collect(toCollection(LinkedHashSet::new)));
             sessions.remove(sessionId);
         }
     }
 
     @Override
-    public SensiNactSession getSession(UserInfo user, String sessionId) {
-        Objects.requireNonNull(user);
-        SensiNactSessionImpl session = null;
-        String userId = user.getUserId();
-
+    public SensiNactSession getSession(String sessionId) {
+        SensiNactSessionImpl session;
         synchronized (lock) {
-            if (sessionsByUser.getOrDefault(userId, Set.of()).contains(sessionId)) {
-                session = sessions.get(sessionId);
-            }
+            session = sessions.get(sessionId);
         }
 
         if (session != null && session.isExpired()) {
-            removeSession(userId, sessionId);
+            removeSession(null, sessionId);
             session = null;
         }
 
@@ -126,24 +126,19 @@ public class SessionManager implements SensiNactSessionManager, TypedEventHandle
     }
 
     @Override
-    public List<String> getSessionIds(UserInfo user) {
-        Objects.requireNonNull(user);
-        String userId = user.getUserId();
+    public List<String> getSessionIds(String userToken) {
         List<String> ids;
         synchronized (lock) {
-            ids = sessionsByUser.getOrDefault(userId, Set.of()).stream().collect(toList());
+            ids = sessionsByUser.getOrDefault(userToken, Set.of()).stream().collect(toList());
         }
 
         Iterator<String> it = ids.iterator();
         while (it.hasNext()) {
-            String sessionId = it.next();
-            SensiNactSession session;
-            synchronized (lock) {
-                session = sessions.get(sessionId);
-            }
-
-            if (session == null || session.isExpired()) {
-                removeSession(userId, sessionId);
+            SensiNactSession session = getSession(it.next());
+            if (session == null) {
+                it.remove();
+            } else if (session.isExpired()) {
+                removeSession(userToken, session.getSessionId());
                 it.remove();
             }
         }
@@ -151,13 +146,12 @@ public class SessionManager implements SensiNactSessionManager, TypedEventHandle
     }
 
     @Override
-    public SensiNactSession createNewSession(UserInfo user) {
-        Objects.requireNonNull(user);
+    public SensiNactSession createNewSession(String userToken) {
         SensiNactSessionImpl session = new SensiNactSessionImpl(thread);
         String sessionId = session.getSessionId();
 
         synchronized (lock) {
-            sessionsByUser.merge(user.getUserId(), Set.of(sessionId),
+            sessionsByUser.merge(userToken, Set.of(sessionId),
                     (a, b) -> Stream.concat(b.stream(), a.stream()).collect(toCollection(LinkedHashSet::new)));
             sessions.put(sessionId, session);
         }
@@ -174,32 +168,12 @@ public class SessionManager implements SensiNactSessionManager, TypedEventHandle
             if (!session.isExpired()) {
                 try {
                     session.notify(topic, event);
+                    continue;
                 } catch (Exception e) {
                     // TODO log this
                 }
-            } else {
-                removeSession(session.getUserInfo().getUserId(), session.getSessionId());
             }
+            removeSession(null, session.getSessionId());
         }
-    }
-
-    @Override
-    public SensiNactSession getDefaultAnonymousSession() {
-        return getDefaultSession(UserInfo.ANONYMOUS);
-    }
-
-    @Override
-    public SensiNactSession getAnonymousSession(String sessionId) {
-        return getSession(UserInfo.ANONYMOUS, sessionId);
-    }
-
-    @Override
-    public List<String> getAnonymousSessionIds() {
-        return getSessionIds(UserInfo.ANONYMOUS);
-    }
-
-    @Override
-    public SensiNactSession createNewAnonymousSession() {
-        return createNewSession(UserInfo.ANONYMOUS);
     }
 }

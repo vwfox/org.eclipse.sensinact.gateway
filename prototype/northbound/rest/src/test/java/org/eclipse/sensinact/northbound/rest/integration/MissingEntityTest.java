@@ -20,71 +20,64 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.TimeUnit;
 
-import org.eclipse.sensinact.northbound.query.dto.result.ErrorResultDTO;
-import org.eclipse.sensinact.northbound.query.dto.result.ResponseDescribeProviderDTO;
-import org.eclipse.sensinact.northbound.query.dto.result.ResponseGetDTO;
-import org.eclipse.sensinact.northbound.query.dto.result.ResultListResourcesDTO;
-import org.eclipse.sensinact.northbound.query.dto.result.ResultListServicesDTO;
-import org.eclipse.sensinact.northbound.query.dto.result.TypedResponse;
+import org.eclipse.sensinact.northbound.rest.dto.GetResponse;
+import org.eclipse.sensinact.northbound.rest.dto.ProviderDescriptionDTO;
+import org.eclipse.sensinact.northbound.rest.dto.ResultResourcesListDTO;
+import org.eclipse.sensinact.northbound.rest.dto.ResultServicesListDTO;
+import org.eclipse.sensinact.northbound.rest.dto.ResultTypedResponseDTO;
 import org.eclipse.sensinact.prototype.PrototypePush;
+import org.eclipse.sensinact.prototype.SensiNactSession;
+import org.eclipse.sensinact.prototype.SensiNactSessionManager;
 import org.eclipse.sensinact.prototype.generic.dto.BulkGenericDto;
 import org.eclipse.sensinact.prototype.generic.dto.GenericDto;
+import org.eclipse.sensinact.prototype.notification.ResourceDataNotification;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.opentest4j.AssertionFailedError;
-import org.osgi.service.cm.Configuration;
 import org.osgi.test.common.annotation.InjectService;
-import org.osgi.test.common.annotation.Property;
-import org.osgi.test.common.annotation.config.InjectConfiguration;
-import org.osgi.test.common.annotation.config.WithConfiguration;
-import org.osgi.test.common.service.ServiceAware;
-import org.osgi.test.junit5.cm.ConfigurationExtension;
 import org.osgi.test.junit5.service.ServiceExtension;
 
-import jakarta.ws.rs.core.Application;
-
-@ExtendWith({ ServiceExtension.class, ConfigurationExtension.class })
+@ExtendWith(ServiceExtension.class)
 public class MissingEntityTest {
 
-    @BeforeEach
-    public void await(
-            @InjectConfiguration(withConfig = @WithConfiguration(pid = "sensinact.northbound.rest", location = "?", properties = {
-                    @Property(key = "allow.anonymous", value = "true"),
-                    @Property(key = "bar", value = "foobar") })) Configuration cm,
-            @InjectService(filter = "(bar=foobar)", cardinality = 0) ServiceAware<Application> a)
-            throws InterruptedException {
-        a.waitForService(5000);
-        for (int i = 0; i < 10; i++) {
-            try {
-                if (utils.queryStatus("/").statusCode() == 200)
-                    return;
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            Thread.sleep(200);
-        }
-        throw new AssertionFailedError("REST API did not appear");
-    }
-
-    @AfterEach
-    public void clear(@InjectConfiguration("sensinact.northbound.rest") Configuration cm) throws Exception {
-        cm.delete();
-        Thread.sleep(500);
-    }
+    private static final String USER = "user";
 
     private static final String PROVIDER = "RestMissingSvcProvider";
+    private static final String PROVIDER_TOPIC = PROVIDER + "/*";
     private static final String SERVICE = "service";
     private static final String RESOURCE = "resource";
     private static final Integer VALUE = 42;
 
     @InjectService
+    SensiNactSessionManager sessionManager;
+
+    @InjectService
     PrototypePush push;
 
+    BlockingQueue<ResourceDataNotification> queue;
+
     final TestUtils utils = new TestUtils();
+
+    @BeforeEach
+    void start() throws InterruptedException {
+        queue = new ArrayBlockingQueue<>(32);
+        SensiNactSession session = sessionManager.getDefaultSession(USER);
+        session.addListener(List.of(PROVIDER_TOPIC), (t, e) -> queue.offer(e), null, null, null);
+        assertNull(queue.poll(500, TimeUnit.MILLISECONDS));
+    }
+
+    @AfterEach
+    void stop() {
+        SensiNactSession session = sessionManager.getDefaultSession(USER);
+        session.activeListeners().keySet().forEach(session::removeListener);
+        queue.clear();
+        queue = null;
+    }
 
     /**
      * Missing provider should return a 404
@@ -92,48 +85,55 @@ public class MissingEntityTest {
     @Test
     void missingProvider() throws Exception {
         final String missingProvider = PROVIDER + "__missing__";
-        ErrorResultDTO typedResult;
+        ResultTypedResponseDTO<?> typedResult;
 
         // Service description
         typedResult = utils.queryJson(String.join("/", "providers", missingProvider, "services", SERVICE),
-                ErrorResultDTO.class);
+                ResultTypedResponseDTO.class);
         assertEquals(404, typedResult.statusCode);
+        assertNull(typedResult.response);
         assertNotNull(typedResult.error);
         assertFalse(typedResult.error.isEmpty());
 
         // Resources list
-        ErrorResultDTO rcListResult = utils.queryJson(
-                String.join("/", "providers", missingProvider, "services", SERVICE, "resources"), ErrorResultDTO.class);
+        ResultResourcesListDTO rcListResult = utils.queryJson(
+                String.join("/", "providers", missingProvider, "services", SERVICE, "resources"),
+                ResultResourcesListDTO.class);
         assertEquals(404, rcListResult.statusCode);
+        assertNull(rcListResult.resources);
         assertNotNull(rcListResult.error);
         assertFalse(rcListResult.error.isEmpty());
 
         // Resource description
         typedResult = utils.queryJson(
                 String.join("/", "providers", missingProvider, "services", SERVICE, "resources", RESOURCE),
-                ErrorResultDTO.class);
+                ResultTypedResponseDTO.class);
         assertEquals(404, typedResult.statusCode);
+        assertNull(typedResult.response);
         assertNotNull(typedResult.error);
         assertFalse(typedResult.error.isEmpty());
 
         // Resource GET
         typedResult = utils.queryJson(
                 String.join("/", "providers", missingProvider, "services", SERVICE, "resources", RESOURCE, "GET"),
-                ErrorResultDTO.class);
+                ResultTypedResponseDTO.class);
         assertEquals(404, typedResult.statusCode);
+        assertNull(typedResult.response);
         assertNotNull(typedResult.error);
         assertFalse(typedResult.error.isEmpty());
 
         // Provider description
-        typedResult = utils.queryJson(String.join("/", "providers", missingProvider), ErrorResultDTO.class);
+        typedResult = utils.queryJson(String.join("/", "providers", missingProvider), ResultTypedResponseDTO.class);
         assertEquals(404, typedResult.statusCode);
+        assertNull(typedResult.response);
         assertNotNull(typedResult.error);
         assertFalse(typedResult.error.isEmpty());
 
         // Services list
-        ErrorResultDTO svcListResult = utils.queryJson(String.join("/", "providers", missingProvider, "services"),
-                ErrorResultDTO.class);
+        ResultServicesListDTO svcListResult = utils
+                .queryJson(String.join("/", "providers", missingProvider, "services"), ResultServicesListDTO.class);
         assertEquals(404, svcListResult.statusCode);
+        assertNull(svcListResult.services);
         assertNotNull(svcListResult.error);
         assertFalse(svcListResult.error.isEmpty());
     }
@@ -143,62 +143,65 @@ public class MissingEntityTest {
      */
     @Test
     void missingService() throws Exception {
-        String provider_service = PROVIDER + "Service";
+        String provider_service = PROVIDER + "_service";
         // Register the resource
         GenericDto dto = utils.makeDto(provider_service, SERVICE, RESOURCE, VALUE, Integer.class);
         push.pushUpdate(dto).getValue();
 
         // Check value
-        TypedResponse<?> result = utils.queryJson(
+        ResultTypedResponseDTO<?> result = utils.queryJson(
                 String.join("/", "providers", provider_service, "services", SERVICE, "resources", RESOURCE, "GET"),
-                TypedResponse.class);
-        ResponseGetDTO response = utils.convert(result, ResponseGetDTO.class);
+                ResultTypedResponseDTO.class);
+        GetResponse<?> response = utils.convert(result, GetResponse.class);
         assertEquals(VALUE, response.value);
 
         final String missingService = SERVICE + "__missing__";
-        ErrorResultDTO errorResult;
+        ResultTypedResponseDTO<?> typedResult;
 
         // Service description
-        errorResult = utils.queryJson(String.join("/", "providers", provider_service, "services", missingService),
-                ErrorResultDTO.class);
-        assertEquals(404, errorResult.statusCode);
-        assertNotNull(errorResult.error);
-        assertFalse(errorResult.error.isEmpty());
+        typedResult = utils.queryJson(String.join("/", "providers", provider_service, "services", missingService),
+                ResultTypedResponseDTO.class);
+        assertEquals(404, typedResult.statusCode);
+        assertNull(typedResult.response);
+        assertNotNull(typedResult.error);
+        assertFalse(typedResult.error.isEmpty());
 
         // Resources list
-        errorResult = utils.queryJson(
+        ResultResourcesListDTO rcListResult = utils.queryJson(
                 String.join("/", "providers", provider_service, "services", missingService, "resources"),
-                ErrorResultDTO.class);
-        assertEquals(404, errorResult.statusCode);
-        assertNotNull(errorResult.error);
-        assertFalse(errorResult.error.isEmpty());
+                ResultResourcesListDTO.class);
+        assertEquals(404, rcListResult.statusCode);
+        assertNull(rcListResult.resources);
+        assertNotNull(rcListResult.error);
+        assertFalse(rcListResult.error.isEmpty());
 
         // Resource description
-        errorResult = utils.queryJson(
+        typedResult = utils.queryJson(
                 String.join("/", "providers", provider_service, "services", missingService, "resources", RESOURCE),
-                ErrorResultDTO.class);
-        assertEquals(404, errorResult.statusCode);
-        assertNotNull(errorResult.error);
-        assertFalse(errorResult.error.isEmpty());
+                ResultTypedResponseDTO.class);
+        assertEquals(404, typedResult.statusCode);
+        assertNull(typedResult.response);
+        assertNotNull(typedResult.error);
+        assertFalse(typedResult.error.isEmpty());
 
         // Resource GET
-        errorResult = utils.queryJson(String.join("/", "providers", provider_service, "services", missingService,
-                "resources", RESOURCE, "GET"), ErrorResultDTO.class);
-        assertEquals(404, errorResult.statusCode);
-        assertNotNull(errorResult.error);
-        assertFalse(errorResult.error.isEmpty());
+        typedResult = utils.queryJson(String.join("/", "providers", provider_service, "services", missingService,
+                "resources", RESOURCE, "GET"), ResultTypedResponseDTO.class);
+        assertEquals(404, typedResult.statusCode);
+        assertNull(typedResult.response);
+        assertNotNull(typedResult.error);
+        assertFalse(typedResult.error.isEmpty());
 
         // Provider description
-        TypedResponse<?> typedResult = utils.queryJson(String.join("/", "providers", provider_service),
-                TypedResponse.class);
+        typedResult = utils.queryJson(String.join("/", "providers", provider_service), ResultTypedResponseDTO.class);
         assertEquals(200, typedResult.statusCode);
-        ResponseDescribeProviderDTO provider = utils.convert(typedResult, ResponseDescribeProviderDTO.class);
+        ProviderDescriptionDTO provider = utils.convert(typedResult, ProviderDescriptionDTO.class);
         assertEquals(provider_service, provider.name);
         assertFalse(provider.services.contains(missingService), "Missing service is registered");
 
         // Services list
-        ResultListServicesDTO svcListResult = utils
-                .queryJson(String.join("/", "providers", provider_service, "services"), ResultListServicesDTO.class);
+        ResultServicesListDTO svcListResult = utils
+                .queryJson(String.join("/", "providers", provider_service, "services"), ResultServicesListDTO.class);
         assertEquals(200, svcListResult.statusCode);
         assertFalse(svcListResult.services.contains(missingService), "Missing service is registered");
     }
@@ -216,15 +219,15 @@ public class MissingEntityTest {
         final String missingResource = RESOURCE + "__missing__";
 
         // Check resources list
-        ResultListResourcesDTO rcListResult = utils.queryJson(
+        ResultResourcesListDTO rcListResult = utils.queryJson(
                 String.join("/", "providers", provider_resource, "services", SERVICE, "resources"),
-                ResultListResourcesDTO.class);
+                ResultResourcesListDTO.class);
         assertEquals(200, rcListResult.statusCode);
         assertFalse(rcListResult.resources.contains(missingResource), "Missing resource is registered");
 
         // Get value
-        ErrorResultDTO result = utils.queryJson(String.join("/", "providers", provider_resource, "services", SERVICE,
-                "resources", missingResource, "GET"), ErrorResultDTO.class);
+        ResultTypedResponseDTO<?> result = utils.queryJson(String.join("/", "providers", provider_resource, "services",
+                SERVICE, "resources", missingResource, "GET"), ResultTypedResponseDTO.class);
         assertEquals(404, result.statusCode);
         assertNotNull(result.error, "No warning message set");
         assertFalse(result.error.isEmpty(), "No warning message set");
@@ -245,21 +248,21 @@ public class MissingEntityTest {
         push.pushUpdate(dto).getValue();
 
         // Check resources list
-        ResultListResourcesDTO rcListResult = utils.queryJson(
+        ResultResourcesListDTO rcListResult = utils.queryJson(
                 String.join("/", "providers", provider2, "services", SERVICE, "resources"),
-                ResultListResourcesDTO.class);
+                ResultResourcesListDTO.class);
         assertEquals(200, rcListResult.statusCode);
         assertTrue(rcListResult.resources.contains(RESOURCE), "Resource is not registered");
 
         // Get value
         Instant queryTime = Instant.now();
-        TypedResponse<?> result = utils.queryJson(
+        ResultTypedResponseDTO<?> result = utils.queryJson(
                 String.join("/", "providers", provider2, "services", SERVICE, "resources", RESOURCE, "GET"),
-                TypedResponse.class);
+                ResultTypedResponseDTO.class);
         assertEquals(204, result.statusCode);
         assertNotNull(result.error, "No warning message set");
         assertFalse(result.error.isEmpty(), "No warning message set");
-        ResponseGetDTO response = utils.convert(result, ResponseGetDTO.class);
+        GetResponse<?> response = utils.convert(result, GetResponse.class);
         assertNotNull(response, "No empty value response");
         assertFalse(queryTime.isAfter(Instant.ofEpochMilli(response.timestamp)), "Missing resource has a timestamp");
         assertNull(response.value, "Got a value for a missing resource");

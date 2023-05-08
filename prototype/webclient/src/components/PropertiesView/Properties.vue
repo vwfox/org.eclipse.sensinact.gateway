@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import {Component, Prop, Vue} from "vue-property-decorator";
+import {Component, Prop, Vue, Watch} from "vue-property-decorator";
 import Location from "@/components/Location.vue";
 import Thing from "@/components/Thing.vue";
 import Datastreams from "@/components/Datastreams.vue";
@@ -30,7 +30,10 @@ import Datastreams from "@/components/Datastreams.vue";
 export default class PropertiesC extends Vue{
   @Prop() readonly data:any;
 
-
+  @Watch('data')data_changed(new_data:any){
+    console.log('new data')
+    console.log(new_data)
+  }
 
 }
 </script>
@@ -40,11 +43,14 @@ export default class PropertiesC extends Vue{
   height: 100%;
   width: 100%;
   z-index: 500;
-  background: #3a3a3a;
+  background: transparent;
   border-radius: 2px;
   overflow-y: auto;
   text-align: left;
   color: #d8d8d8;
   position: relative;
+}
+.tabs a {
+ font-weight: 300;
 }
 </style>

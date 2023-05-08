@@ -33,7 +33,6 @@ import org.eclipse.sensinact.prototype.command.impl.CommandScopedImpl;
 import org.eclipse.sensinact.prototype.impl.snapshot.ProviderSnapshotImpl;
 import org.eclipse.sensinact.prototype.impl.snapshot.ResourceSnapshotImpl;
 import org.eclipse.sensinact.prototype.impl.snapshot.ServiceSnapshotImpl;
-import org.eclipse.sensinact.prototype.model.ResourceType;
 import org.eclipse.sensinact.prototype.model.nexus.impl.ModelNexus;
 import org.eclipse.sensinact.prototype.notification.NotificationAccumulator;
 import org.eclipse.sensinact.prototype.snapshot.ProviderSnapshot;
@@ -265,7 +264,7 @@ public class SensinactDigitalTwinImpl extends CommandScopedImpl implements Sensi
         // Filter providers according to their services
         providersStream = providersStream.map(p -> {
             final Provider modelProvider = p.getModelProvider();
-            nexusImpl.getServicesForModel(modelProvider.eClass()).forEach((feature) -> {
+            modelProvider.eClass().getEStructuralFeatures().stream().forEach((feature) -> {
                 p.add(new ServiceSnapshotImpl(p, feature.getName(), (Service) modelProvider.eGet(feature),
                         snapshotTime));
             });
@@ -278,9 +277,7 @@ public class SensinactDigitalTwinImpl extends CommandScopedImpl implements Sensi
         // Filter providers according to their resources
         providersStream = providersStream.map(p -> {
             p.getServices().stream().forEach(s -> {
-                // Avoid ModelService which may be null
-                EStructuralFeature sf = s.getProvider().getModelProvider().eClass().getEStructuralFeature(s.getName());
-                nexusImpl.getResourcesForService((EClass) sf.getEType())
+                s.getModelService().eClass().getEStructuralFeatures().stream()
                         .forEach(f -> s.add(new ResourceSnapshotImpl(s, f, snapshotTime)));
             });
             return p;
@@ -294,14 +291,11 @@ public class SensinactDigitalTwinImpl extends CommandScopedImpl implements Sensi
         providersStream = providersStream.map(p -> {
             p.getServices().stream().forEach(s -> {
                 s.getResources().stream().forEach(rc -> {
-                    if (rc.getResourceType() == ResourceType.ACTION) {
-                        // Skip values for actions
-                        return;
-                    }
                     // Get the resource metadata
                     final Service svc = rc.getService().getModelService();
                     final ETypedElement rcFeature = rc.getFeature();
-                    final ResourceMetadata metadata = svc == null ? null : svc.getMetadata().get(rcFeature);
+
+                    final ResourceMetadata metadata = svc.getMetadata().get(rcFeature);
                     final Instant timestamp;
                     if (metadata != null) {
                         timestamp = metadata.getTimestamp();
@@ -309,8 +303,7 @@ public class SensinactDigitalTwinImpl extends CommandScopedImpl implements Sensi
                         timestamp = null;
                     }
 
-                    rc.setValue(new TimedValueImpl<Object>(
-                            svc == null ? null : svc.eGet((EStructuralFeature) rcFeature), timestamp));
+                    rc.setValue(new TimedValueImpl<Object>(svc.eGet((EStructuralFeature) rcFeature), timestamp));
                 });
             });
             p.filterEmptyServices();

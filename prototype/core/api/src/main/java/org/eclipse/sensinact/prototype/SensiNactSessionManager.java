@@ -8,30 +8,20 @@
 * SPDX-License-Identifier: EPL-2.0
 *
 * Contributors:
-*   Kentyou - initial implementation
+*   Kentyou - initial implementation 
 **********************************************************************/
 package org.eclipse.sensinact.prototype;
 
 import java.util.List;
 
-import org.eclipse.sensinact.prototype.security.UserInfo;
-
 public interface SensiNactSessionManager {
 
-    SensiNactSession getDefaultSession(UserInfo user);
+    SensiNactSession getDefaultSession(String userToken);
 
-    SensiNactSession getSession(UserInfo user, String sessionId);
+    SensiNactSession getSession(String sessionId);
 
-    List<String> getSessionIds(UserInfo user);
+    List<String> getSessionIds(String userToken);
 
-    SensiNactSession createNewSession(UserInfo user);
-
-    SensiNactSession getDefaultAnonymousSession();
-
-    SensiNactSession getAnonymousSession(String sessionId);
-
-    List<String> getAnonymousSessionIds();
-
-    SensiNactSession createNewAnonymousSession();
+    SensiNactSession createNewSession(String userToken);
 
 }

@@ -12,10 +12,7 @@
 **********************************************************************/
 package org.eclipse.sensinact.gateway.southbound.device.factory.parser.json;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -59,13 +56,15 @@ public class JsonParser implements IDeviceMappingParser {
             final JsonNode root;
             if (strEncoding != null && !strEncoding.isBlank()) {
                 final Charset charset = Charset.forName(strEncoding);
-                final InputStream is;
+                final byte[] noBomInput;
                 if (StandardCharsets.UTF_8.equals(charset) && rawInput.length > 3) {
-                    is = EncodingUtils.removeBOM(rawInput);
+                    noBomInput = EncodingUtils.removeBOM(rawInput);
                 } else {
-                    is = new ByteArrayInputStream(rawInput);
+                    noBomInput = rawInput;
                 }
-                root = objectMapper.readValue(new InputStreamReader(is, charset), JsonNode.class);
+
+                final String input = new String(noBomInput, charset).trim();
+                root = objectMapper.readValue(input, JsonNode.class);
             } else {
                 root = objectMapper.readValue(rawInput, JsonNode.class);
             }

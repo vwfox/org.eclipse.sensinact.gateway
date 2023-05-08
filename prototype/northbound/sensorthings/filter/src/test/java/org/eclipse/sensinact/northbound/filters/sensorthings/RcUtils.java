@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.sensinact.prototype.model.ResourceType;
 import org.eclipse.sensinact.prototype.snapshot.ProviderSnapshot;
 import org.eclipse.sensinact.prototype.snapshot.ResourceSnapshot;
 import org.eclipse.sensinact.prototype.snapshot.ServiceSnapshot;
@@ -146,11 +145,6 @@ public class RcUtils {
             @Override
             public ServiceSnapshot getService() {
                 return svc;
-            }
-
-            @Override
-            public ResourceType getResourceType() {
-                return ResourceType.PROPERTY;
             }
         };
 

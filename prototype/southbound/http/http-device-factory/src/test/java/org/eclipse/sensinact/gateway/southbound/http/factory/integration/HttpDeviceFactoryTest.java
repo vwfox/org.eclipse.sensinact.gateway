@@ -43,7 +43,6 @@ import org.eclipse.sensinact.prototype.ResourceDescription;
 import org.eclipse.sensinact.prototype.SensiNactSession;
 import org.eclipse.sensinact.prototype.SensiNactSessionManager;
 import org.eclipse.sensinact.prototype.notification.ResourceDataNotification;
-import org.eclipse.sensinact.prototype.security.UserInfo;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -102,7 +101,7 @@ public class HttpDeviceFactoryTest {
 
     @BeforeEach
     void start() throws InterruptedException {
-        session = sessionManager.getDefaultSession(UserInfo.ANONYMOUS);
+        session = sessionManager.getDefaultSession("user");
         queue = new ArrayBlockingQueue<>(32);
         queue2 = new ArrayBlockingQueue<>(32);
     }
@@ -131,38 +130,6 @@ public class HttpDeviceFactoryTest {
         try (InputStream inStream = getClass().getClassLoader().getResourceAsStream("/" + filename)) {
             return inStream.readAllBytes();
         }
-    }
-
-    /**
-     * Asserts that we got notifications for both providers with both values
-     *
-     * @param providerValue1 Expected new value of provider 1
-     * @param providerValue2 Expected new value of provider 2
-     * @param timeoutSeconds Timeout in seconds
-     */
-    void assertNotifications(final Object providerValue1, final Object providerValue2, final int timeoutSeconds)
-            throws Exception {
-        final Instant timeout = Instant.now().plus(timeoutSeconds, ChronoUnit.SECONDS);
-        boolean got1 = false;
-        boolean got2 = false;
-
-        // Wait for an update (wait 4 seconds to be fair with the 2-seconds poll)
-        while (Instant.now().isBefore(timeout) && !(got1 && got2)) {
-            if (!got1) {
-                ResourceDataNotification notif = queue.poll(1, TimeUnit.SECONDS);
-                if (notif != null) {
-                    got1 = Objects.equals(providerValue1, notif.newValue);
-                }
-            }
-            if (!got2) {
-                ResourceDataNotification notif = queue2.poll(1, TimeUnit.SECONDS);
-                if (notif != null) {
-                    got2 = Objects.equals(providerValue2, notif.newValue);
-                }
-            }
-        }
-
-        assertTrue(got1 && got2, "Timeout expired before update");
     }
 
     @Test
@@ -270,8 +237,9 @@ public class HttpDeviceFactoryTest {
             content = template.replace("$val1$", "10").replace("$val2$", "20");
             handler.setData("/data", content);
 
-            // Wait for notifications
-            assertNotifications(10, 20, 10);
+            // Wait for an update (wait 4 seconds to be fair with the 2-seconds poll)
+            assertNotNull(queue.poll(4, TimeUnit.SECONDS));
+            assertNotNull(queue2.poll(1, TimeUnit.SECONDS));
 
             // Check timestamp
             final Instant secondTimestamp = session.describeResource(provider1, "data", "value").timestamp;
@@ -373,8 +341,27 @@ public class HttpDeviceFactoryTest {
             // Update returned value
             handler.setData("/dynamic", template.replace("$val1$", "38").replace("$val2$", "15"));
 
-            // Wait for notifications
-            assertNotifications(38, 15, 10);
+            final Instant timeout = Instant.now().plus(5, ChronoUnit.SECONDS);
+            boolean got1 = false;
+            boolean got2 = false;
+
+            // Wait for an update (wait 4 seconds to be fair with the 2-seconds poll)
+            while (Instant.now().isBefore(timeout) && !got1 && !got2) {
+                if (!got1) {
+                    ResourceDataNotification notif = queue.poll(1, TimeUnit.SECONDS);
+                    if (notif != null) {
+                        got1 = Objects.equals(38, notif.newValue);
+                    }
+                }
+                if (!got2) {
+                    ResourceDataNotification notif = queue2.poll(1, TimeUnit.SECONDS);
+                    if (notif != null) {
+                        got2 = Objects.equals(15, notif.newValue);
+                    }
+                }
+            }
+
+            assertTrue(got1 && got2, "Timeout expired before update");
 
             // Check timestamp
             final Instant secondTimestamp = session.describeResource(provider1, "data", "value").timestamp;

@@ -12,8 +12,6 @@
 **********************************************************************/
 package org.eclipse.sensinact.gateway.southbound.device.factory;
 
-import java.util.Map;
-
 import org.eclipse.sensinact.gateway.southbound.device.factory.dto.DeviceMappingConfigurationDTO;
 
 /**
@@ -28,7 +26,7 @@ public interface IDeviceMappingHandler {
      * @param payload       Raw content to parse
      * @throws DeviceFactoryException Error handling records
      */
-    void handle(DeviceMappingConfigurationDTO configuration, Map<String, String> context, byte[] payload)
+    void handle(DeviceMappingConfigurationDTO configuration, byte[] payload)
             throws MissingParserException, InvalidResourcePathException, ParserException, DeviceFactoryException;
 
 }

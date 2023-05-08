@@ -18,7 +18,6 @@ import org.eclipse.sensinact.prototype.PrototypePush;
 import org.eclipse.sensinact.prototype.SensiNactSession;
 import org.eclipse.sensinact.prototype.SensiNactSessionManager;
 import org.eclipse.sensinact.prototype.generic.dto.GenericDto;
-import org.eclipse.sensinact.prototype.security.UserInfo;
 import org.eclipse.sensinact.sensorthings.sensing.dto.Id;
 import org.eclipse.sensinact.sensorthings.sensing.dto.ResultList;
 import org.eclipse.sensinact.sensorthings.sensing.dto.Self;
@@ -44,7 +43,7 @@ public class AbstractIntegrationTest {
     protected static final TypeReference<ResultList<Self>> RESULT_SELF = new TypeReference<>() {
     };
 
-    private static final UserInfo USER = UserInfo.ANONYMOUS;
+    private static final String USER = "user";
 
     @InjectService
     protected PrototypePush push;

@@ -22,14 +22,11 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublishers;
-import java.net.http.HttpRequest.Builder;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodySubscribers;
-import java.util.Map;
 
-import org.eclipse.sensinact.northbound.query.api.AbstractResultDTO;
-import org.eclipse.sensinact.northbound.query.api.EResultType;
-import org.eclipse.sensinact.northbound.query.dto.result.TypedResponse;
+import org.eclipse.sensinact.northbound.rest.dto.ResultRootDTO;
+import org.eclipse.sensinact.northbound.rest.dto.ResultTypedResponseDTO;
 import org.eclipse.sensinact.prototype.generic.dto.GenericDto;
 import org.eclipse.sensinact.prototype.notification.ResourceDataNotification;
 
@@ -66,7 +63,7 @@ public class TestUtils {
     /**
      * Executes a GET request and returns its parsed content
      */
-    public HttpResponse<?> queryStatus(final String path) throws IOException, InterruptedException {
+    public <T> T queryJson(final String path, final Class<T> resultType) throws IOException, InterruptedException {
         // Normalize URI
         final URI targetUri;
         if (path.startsWith("/")) {
@@ -76,30 +73,6 @@ public class TestUtils {
         }
 
         final HttpRequest req = HttpRequest.newBuilder(targetUri).build();
-        return client.send(req, (x) -> BodySubscribers.discarding());
-    }
-
-    /**
-     * Executes a GET request and returns its parsed content
-     */
-    public <T> T queryJson(final String path, final Class<T> resultType) throws IOException, InterruptedException {
-        return queryJson(path, resultType, Map.of());
-    }
-
-    public <T> T queryJson(final String path, final Class<T> resultType, Map<String, String> headers)
-            throws IOException, InterruptedException {
-        // Normalize URI
-        final URI targetUri;
-        if (path.startsWith("/")) {
-            targetUri = URI.create("http://localhost:8185/sensinact" + path);
-        } else {
-            targetUri = URI.create("http://localhost:8185/sensinact/" + path);
-        }
-
-        Builder builder = HttpRequest.newBuilder(targetUri);
-        headers.forEach((a, b) -> builder.header(a, b));
-
-        final HttpRequest req = builder.build();
         final HttpResponse<InputStream> response = client.send(req, (x) -> BodySubscribers.ofInputStream());
         return mapper.createParser(response.body()).readValueAs(resultType);
     }
@@ -126,12 +99,8 @@ public class TestUtils {
     /**
      * Converts the content of the parsed response
      */
-    public <T> T convert(final TypedResponse<?> dto, Class<T> type) {
-        return convert(dto.response, type);
-    }
-
-    public <T> T convert(final Object o, Class<T> type) {
-        return mapper.convertValue(o, type);
+    public <T> T convert(final ResultTypedResponseDTO<?> dto, Class<T> type) {
+        return mapper.convertValue(dto.response, type);
     }
 
     /**
@@ -148,8 +117,7 @@ public class TestUtils {
     /**
      * Checks if the parsed result is successful
      */
-    public void assertResultSuccess(final AbstractResultDTO result, final EResultType expectedType,
-            final String... uriParts) {
+    public void assertResultSuccess(final ResultRootDTO result, final String expectedType, final String... uriParts) {
         assertEquals(200, result.statusCode, "Invalid status code");
         assertNull(result.error, "Got an error");
         assertEquals(expectedType, result.type, "Invalid result type");

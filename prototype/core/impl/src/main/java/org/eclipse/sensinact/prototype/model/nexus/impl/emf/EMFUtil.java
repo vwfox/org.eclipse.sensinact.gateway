@@ -46,15 +46,11 @@ import org.eclipse.sensinact.model.core.ResourceAttribute;
 import org.eclipse.sensinact.model.core.SensiNactFactory;
 import org.eclipse.sensinact.model.core.SensiNactPackage;
 import org.eclipse.sensinact.model.core.ServiceReference;
-import org.osgi.util.converter.ConversionException;
 import org.osgi.util.converter.Converter;
 import org.osgi.util.converter.ConverterFunction;
 import org.osgi.util.converter.Converters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.json.JsonMapper;
 
 /**
  * Some Helper methods to work with Ecores.
@@ -67,7 +63,6 @@ public class EMFUtil {
     private static final Logger LOG = LoggerFactory.getLogger(EMFUtil.class);
 
     private static final Converter converter;
-    private static final ObjectMapper mapper = JsonMapper.builder().build();
     private static final Map<Class<?>, EClassifier> typeMap = new HashMap<Class<?>, EClassifier>();
     static {
         converter = Converters.newConverterBuilder().errorHandler(EMFUtil::fallbackConversion).build();
@@ -77,8 +72,7 @@ public class EMFUtil {
 
     private static Object fallbackConversion(Object o, Type t) {
         try {
-            // Avoid infinite recursion when the input is a String
-            return o instanceof String ? ConverterFunction.CANNOT_HANDLE : converter.convert(o.toString()).to(t);
+            return converter.convert(o.toString()).to(t);
         } catch (Exception e) {
             return ConverterFunction.CANNOT_HANDLE;
         }
@@ -224,36 +218,21 @@ public class EMFUtil {
     }
 
     public static Object convertToTargetType(EClassifier targetType, Object o) {
-        return convertToTargetType((EDataType) targetType, targetType.getInstanceClass(), o);
+        return convertToTargetType(targetType.getInstanceClass(), o);
     }
 
     public static Object convertToTargetType(Class<?> targetType, Object o) {
-        return convertToTargetType((EDataType) typeMap.get(targetType), targetType, o);
-    }
-
-    private static Object convertToTargetType(EDataType targetEType, Class<?> targetType, Object o) {
         Object converted;
         if (o == null) {
             converted = o;
         } else {
             EClassifier type = typeMap.get(o.getClass());
-            if (type == null || targetEType == null) {
-                try {
-                    converted = converter.convert(o).to(targetType);
-                } catch (ConversionException ce) {
-                    if (targetEType != null) {
-                        try {
-                            converted = convertToTargetType(targetEType, targetType, mapper.writeValueAsString(o));
-                        } catch (Exception e) {
-                            throw ce;
-                        }
-                    } else {
-                        throw ce;
-                    }
-                }
+            EClassifier target = typeMap.get(targetType);
+            if (type == null || target == null) {
+                converted = converter.convert(o).to(targetType);
             } else {
                 String string = type.getEPackage().getEFactoryInstance().convertToString((EDataType) type, o);
-                converted = targetEType.getEPackage().getEFactoryInstance().createFromString(targetEType, string);
+                converted = target.getEPackage().getEFactoryInstance().createFromString((EDataType) target, string);
             }
         }
         return converted;

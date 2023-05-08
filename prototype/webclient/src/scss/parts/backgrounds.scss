@@ -1,0 +1,27 @@
+@import "helper";
+@import "colors";
+.bg{
+  &.pattern-gradient{
+    background-color: var(--bs-blue);
+    background-image: linear-gradient(47deg,  $bs-blue 0%,
+            $bs-gradient-green 100%);
+  }
+  &.pattern-turquoise {
+    background-image: url(getAssetBranding('background-pattern-turquoise.png'));
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+  }
+  &.pattern-purple {
+    background-image: url(getAssetBranding('background-pattern-purple.png'));
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+  }
+  &.pattern-red {
+    background-image: url(getAssetBranding('background-pattern-red.png'));
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+  }
+  &.grey{
+    background-color: $bs-grey;
+  }
+}

@@ -1,0 +1,55 @@
+.svg_icon{
+    background-color: #a5a5a5;
+    &.tlc{
+      mask-image:url('@/assets/icons/sensors/traffic-light.svg')
+    }
+    &.battery{
+      mask-image:url('@/assets/icons/sensors/battery-40.svg')
+    }
+    &.building_permit{}
+    &.lighting{}
+    &.PM_1{
+      mask-image:url('@/assets/icons/sensors2/grain.svg')
+    }
+    &.PM_2_5{
+      mask-image:url('@/assets/icons/sensors/grain.svg')
+    }
+    &.PM_10{
+      mask-image:url('@/assets/icons/sensors2/grain.svg')
+    }
+    &.fire_alert{}
+    &.noise{}
+    &.luminosity{}
+    &.CO{
+      mask-image:url('@/assets/icons/sensors/co.svg')
+    }
+    &.chargingstation{}
+    &.noice_measurement{}
+    &.air_pressure{
+      mask:url('@/assets/icons/sensors/gauge.svg')  no-repeat 100% 100%;
+    }
+    &.air_humidity{
+      mask-image:url('@/assets/icons/sensors/humidity.svg')
+    }
+    &.air_temprature{
+      mask-image:url('@/assets/icons/sensors2/temperature.svg')
+    }
+    &.XXX{}
+    &.NO{
+      mask-image:url('@/assets/icons/sensors/no.svg')
+    }
+    &.trash{}
+    &.O3{
+      mask-image:url('@/assets/icons/sensors/o3.svg')
+    }
+    &.parking_slot{}
+    &.parking_deck{}
+    &.NO2{
+      mask-image:url('@/assets/icons/sensors/no2.svg')
+    }
+    &.UV_index{}
+    &.soil_moisture{}
+    &.air_qi{
+      mask-image:url('@/assets/icons/sensors/weather-dust.svg')
+    }
+}
