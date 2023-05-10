@@ -13,7 +13,9 @@
 <template>
   <div id="app">
     <router-view/>
+    <InfoBox v-if="showInfoBox" :infoUri="infoUri||''"></InfoBox>
   </div>
+
 </template>
 
 <style lang="scss">
@@ -38,3 +40,35 @@ nav {
   }
 }
 </style>
+
+<script lang="ts">
+
+import {Vue} from "vue-property-decorator";
+import axios from "axios";
+import Component from "vue-class-component";
+import InfoBox from "@/components/Modal/InfoBox.vue";
+
+@Component({
+  components:{
+    InfoBox
+  }
+})
+export default class App extends Vue {
+
+  private showInfoBox = false;
+  private infoUri = null;
+
+  async mounted() {
+    try {
+      const base = window.location.protocol + '//' + window.location.host;
+      const config = (await axios.get(`config/config.json`)).data;
+      if (config && config.INFO_CHECK_URI && config.INFO_CHECK_URI) {
+        this.infoUri = config.INFO_BASE_URI;
+        this.showInfoBox = (await axios.get(config.INFO_CHECK_URI)).status == 200
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  }
+}
+</script>

@@ -1,6 +1,6 @@
 let config= {
   baseUrl:window.location.origin+'/sensinact/rest',
-  //baseUrl: 'http://localhost:8080/sensinact/rest'
+  //baseUrl: 'https://udp-5g-broker.nomad-dmz.jena.de/sensinact/rest'
 };
 
 export function setBaseUrl(url:string){

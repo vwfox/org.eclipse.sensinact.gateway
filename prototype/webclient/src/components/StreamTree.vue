@@ -62,13 +62,34 @@ export default class StreamTreeC extends Vue{
 
   private selectedNodesKeys:any = {};
 
+  @Watch('$route.query')query_changed(new_query_params:any){
+    if(new_query_params.enabledCategories){
+      let array_of_key_to_select = new_query_params.enabledCategories.split(',');
+      this.treeData.forEach((node:any)=>{
+        if(array_of_key_to_select.includes(node.key)){
+          this.selectedNodesKeys[node.key] = node._data;
+          node.active = true;
+        }
+      })
+      let emit:any = [];
+      for(let key in this.selectedNodesKeys){
+        console.log(this.selectedNodesKeys[key])
+        emit = emit.concat(this.selectedNodesKeys[key])
+      }
+      console.log(emit)
+      //console.log(Object.keys(this.selectedNodesKeys).join(','))
+      //this.$router.replace({ name: 'datastreams', query: { enabledCategories: Object.keys(this.selectedNodesKeys).join(',') }})
+      this.$emit('selection', emit)
+    }
+  }
   mounted(){
     //this.getDatascreamsTree()
+    console.log(this.$route.query)
   }
 
 
   async selected(node:any){
-    console.log(node)
+    console.log(this.selectedNodesKeys)
     if(node.active){
       delete this.selectedNodesKeys[node.key];
       node.active = false;
@@ -77,13 +98,15 @@ export default class StreamTreeC extends Vue{
       node.active = true;
     }
 
-    let emit:any = [];
+    /*let emit:any = [];
     for(let key in this.selectedNodesKeys){
       console.log(this.selectedNodesKeys[key])
       emit = emit.concat(this.selectedNodesKeys[key])
     }
     console.log(emit)
-    this.$emit('selection', emit)
+    console.log(Object.keys(this.selectedNodesKeys).join(','))*/
+    this.$router.replace({ name: 'datastreams', query: { enabledCategories: Object.keys(this.selectedNodesKeys).join(',') }})
+    //this.$emit('selection', emit)
 
   }
 
@@ -102,10 +125,11 @@ export default class StreamTreeC extends Vue{
       ret.push(node);
     }
     this.treeData = ret;
+    this.query_changed(this.$route.query);
   }
 
   get isactive(){
-    console.log('isa');
+    console.log(this.selectedNodesKeys);
    return Object.keys(this.selectedNodesKeys)
   }
   set isactive(val:any){
