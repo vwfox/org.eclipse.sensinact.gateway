@@ -24,7 +24,7 @@
     <div class="map_holder rim">
       <l-map id="map" :zoom="zoom" :center="center">
         <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-        <l-marker v-for="point in points" :key="point['@iot.id']" :lat-lng="res(point.location.coordinates)"
+        <!--<l-marker  v-if="point.location":key="point['@iot.id']" :lat-lng="res(point.location.coordinates)"
                   @click="markerWasClicked(point)">
           <l-icon
 
@@ -36,7 +36,22 @@
             </div>
           </l-icon>
 
-        </l-marker>
+        </l-marker>-->
+        <l-polygon v-for="point in points" :lat-lngs="pol(point.location)" :key="point['@iot.id']" @click="markerWasClicked(point)">
+          <l-marker :lat-lng="res(point.location.features[0].geometry.coordinates[0])"
+                     >
+            <l-icon
+
+              class-name="custom-div-icon"
+            >
+              <div class='marker-pin' :class="{'selected':point['@iot.id']==selected}">
+
+                <i class='mdi mdi-radio-tower'></i>
+              </div>
+            </l-icon>
+
+          </l-marker>
+        </l-polygon>
 
       </l-map>
     </div>
@@ -52,7 +67,7 @@
 
 <script lang="ts">
 import {Component, Vue, Watch} from "vue-property-decorator";
-import {LIcon, LMap, LMarker, LTileLayer} from "vue2-leaflet";
+import {LIcon, LMap, LMarker, LPolygon, LTileLayer} from "vue2-leaflet";
 import {LocationsApi, Location, Locations, Configuration} from "../../openapi/client";
 import PropertiesC from "@/components/PropertiesView/Properties.vue";
 import {BASE_PATH} from "../../openapi/client/base";
@@ -64,14 +79,15 @@ import {getBaseUrl, setBaseUrl} from "@/config/base";
     LMap,
     LTileLayer,
     LMarker,
-    LIcon
+    LIcon,
+    LPolygon
   }
 })
 export default class Map extends Vue {
   private url = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
   private attribution =
     '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors';
-  private zoom = 15;
+  private zoom = 10;
 
   private center = [50.93115286, 11.60392726];
   private markerLatLng = [55.8382551745062, -4.20119980206699]
@@ -92,6 +108,9 @@ export default class Map extends Vue {
 
   res(arr: any) {
     return [arr[1], arr[0]]
+  }
+  pol(location:any){
+    return location.features[0].geometry.coordinates;
   }
   connect(){
     console.log('connect')

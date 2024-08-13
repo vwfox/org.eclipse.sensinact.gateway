@@ -22,6 +22,7 @@
 }*/
 import ObsStore from "@/store/ObsStore";
 
+
 export interface simpleStoreIF{
     [index: string]: SimpleStore;
 }
@@ -29,7 +30,7 @@ export interface simpleStoreIF{
 
 
 export const simpleStore:simpleStoreIF = {
-    obs:new ObsStore(),
+    obs:new ObsStore()
 
 };
 

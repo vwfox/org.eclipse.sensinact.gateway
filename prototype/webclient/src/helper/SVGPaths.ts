@@ -12,18 +12,21 @@
  **********************************************************************/
 
 import {
-  mdiBattery40,
+  mdiBattery40, mdiCamcorder,
   mdiCloudPercent,
   mdiGauge,
-  mdiGrain,
+  mdiGrain, mdiHazardLights,
   mdiThermometerLow,
   mdiTrafficLight,
   mdiWeatherDust
 } from "@mdi/js";
+import {mdiCamera} from "@mdi/js/commonjs/mdi";
 
 export function getPath(id: string) {
   switch (id) {
     case 'tlc':
+      return mdiTrafficLight
+    case 'color':
       return mdiTrafficLight
     case 'battery':
       return mdiBattery40
@@ -39,6 +42,16 @@ export function getPath(id: string) {
       return mdiWeatherDust
     case 'air_temprature':
       return mdiThermometerLow
+    case 'temperature':
+      return mdiThermometerLow
+    case 'traficam':
+      return mdiCamera
+    case 'traficam_observedArea':
+      return mdiCamera
+    case 'viewport':
+      return mdiCamera
+    case 'conflict':
+      return mdiHazardLights
     default:
       return null
   }

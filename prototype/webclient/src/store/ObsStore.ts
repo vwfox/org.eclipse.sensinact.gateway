@@ -12,83 +12,33 @@
  **********************************************************************/
 
 import {SimpleStore} from "@/store/SimpleStore";
-import Vue from "vue";
-import {AxiosResponse} from "axios/index";
-import {Configuration, Observations, ObservationsApi} from "../../openapi/client";
-import {getBaseUrl} from "@/config/base";
-import {LocationsPlus} from "@/views/Datastreams.vue";
+import {Vue} from "vue-property-decorator";
 
 
 
 export default class ObsStore implements SimpleStore {
 
+  private worker = new Worker(new URL("@/worker/obs.ts", import.meta.url));
+  constructor(...args:any) {
+    this.worker.postMessage({command:'start'})
+    this.worker.onmessage = (ev)=>{
+      //console.log('msg in')
+      this.state.obs = ev.data.obs;
+    }
+  }
   public state = Vue.observable({
     obs: {},
-
   });
-  public loading:boolean = Vue.observable(false);
-  private timer:any = null;
-  private points:any = [];
 
 
-  constructor(){
 
 
-  };
+
   setPoints(points:any){
-    this.points = points
-  }
-  async getDataForPoints(){
-    let proms:Promise<AxiosResponse<Observations&LocationsPlus>>[] = []
-    this.points?.forEach((point:any)=>{
-
-      //@ts-ignore
-      proms.push(
-        new Promise(async (res,rej)=>{
-          try{
-            //@ts-ignore
-            let result:AxiosResponse<> = await new ObservationsApi(new Configuration({basePath:getBaseUrl()})).v11ObservationsEntityIdDatastreamObservationsGet(point["dsid"]);
-            if(result.data && result.data.value && result.data.value[0]){
-              //@ts-ignore
-              (result.data.value[0] as LocationsPlus)['dsid'] = point["dsid"];
-            }
-            res(result);
-          }catch (e){
-            rej(e)
-          }
-        }));
-
-    })
-    let promsSettled = await Promise.allSettled(proms);
-    //this.obs= new Map();
-    promsSettled.forEach((obj:any) => {
-      if(obj.value && obj.value.data && obj.value.data.value && obj.value.data.value[0]){
-        let value:String = obj.value.data.value[0]['dsid'] as String
-        //@ts-ignore
-        this.state.obs[value] = obj.value.data.value[0];
-      }
-
-
-    });
-    this.state.obs = {...this.state.obs};
-    //this.points = this.points?.slice(0);
-    //console.log(this.points)
-
-
+    this.worker.postMessage({command:'setPoints',payload:points})
   }
 
-  public settimer(){
-    if(!this.timer){
-      this.timer = setInterval(()=>this.getDataForPoints(),10000)
-    }
+  update(): any {
   }
-  public clearTimer(){
-    if(this.timer) {
-      clearInterval(this.timer)
-      this.timer = null;
-    }
-  }
-  update():any {
 
-  }
 }

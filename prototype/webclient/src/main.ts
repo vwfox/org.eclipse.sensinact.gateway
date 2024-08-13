@@ -30,7 +30,6 @@ import SimpleStore from './store/SimpleStore'
 Vue.use(SimpleStore);
 Vue.use(PerfectScrollbar);
 Vue.use(VueTreeList)
-Vue.use(SimpleStore);
 Vue.config.productionTip = false
 //@ts-ignore
 delete Icon.Default.prototype._getIconUrl;

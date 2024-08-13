@@ -14,22 +14,38 @@
 <template>
   <div class="plane tree">
     <b-loading :active="loading" :can-cancel="false" :is-full-page="false"></b-loading>
-    <perfect-scrollbar>
+
       <div class="tree">
-        <div class="leaf" v-for="leaf in treeData" @click="selected(leaf)" :class="[{'active': leaf.active},leaf.text]"
+        <div class="leaf" v-for="leaf in treeData"  :class="[{'active': leaf.active},leaf.text]"
               :key="leaf.key">
-          <div class="cat_icon">
+          <div class="cat_icon" @click="selected(leaf)">
             <svg-icon type="mdi" v-if="getPath([leaf.text])" :path="getPath([leaf.text])" :size="35" class="svg_icon2"></svg-icon>
             <div class="svg_icon" v-else :class="[leaf.text]"></div>
             <b-tag rounded type="is-primary">{{ leaf._data.length }}</b-tag>
           </div>
-
+          <div class="stitle" @click="selected(leaf)">
           {{ $t('prop.' + leaf.text) }}
+          </div>
+          <div class="chevron" @click="leaf.childs_shown = !leaf.childs_shown">
+            <i class="mdi mdi-chevron-down" v-if="!leaf.childs_shown"></i>
+            <i class="mdi mdi-chevron-up" v-else></i>
+          </div>
+          <div class="childs" v-if="leaf.childs_shown">
+              <div class="leaf" v-for="child in leaf.children" @click="selected(child)" :class="[{'active': child.active},child.text]"
+                   :key="child.key">
+                <div class="cat_icon">
+                  <svg-icon type="mdi" v-if="getPath([leaf.text])" :path="getPath([leaf.text])" :size="35" class="svg_icon2"></svg-icon>
+                  <div class="svg_icon" v-else :class="[leaf.text]"></div>
 
+                </div>
+
+                {{  child.text }}
+            </div>
+          </div>
         </div>
       </div>
 
-    </perfect-scrollbar>
+
   </div>
 </template>
 
@@ -51,7 +67,7 @@ import ThingsC from "@/components/Thing.vue";
 //@ts-ignore
 import VTreeview from "v-treeview"
 import {getBaseUrl} from "@/config/base";
-import groupByName, {groupByCategory} from "@/helper/DatastreamGroups";
+import groupByName, {groupByCategory, groupByCategoryAndThing} from "@/helper/DatastreamGroups";
 //@ts-ignore
 import SvgIcon from '@jamescoyle/vue-icon';
 
@@ -65,15 +81,22 @@ import { getPath } from "@/helper/SVGPaths";
 })
 export default class StreamTreeC extends Vue {
 
-  private loading = false;
+
+   private loading = false;
 
 
   private treeData: any = [];
 
   private selectedNodesKeys: any = {};
+  private oldEnabledCategories = '';
 
-  @Watch('$route.query') query_changed(new_query_params: any) {
-    if (new_query_params.enabledCategories) {
+  @Watch('$route.query') query_changed_out(new_query_params:any){
+    this.query_changed(new_query_params)
+  }
+
+
+  query_changed(new_query_params: any,force=false) {
+    if ( (force || this.oldEnabledCategories!=new_query_params.enabledCategories)) {
       let array_of_key_to_select = new_query_params.enabledCategories.split(',');
       this.treeData.forEach((node: any) => {
         if (array_of_key_to_select.includes(node.key)) {
@@ -83,19 +106,17 @@ export default class StreamTreeC extends Vue {
       })
       let emit: any = [];
       for (let key in this.selectedNodesKeys) {
-        console.log(this.selectedNodesKeys[key])
         emit = emit.concat(this.selectedNodesKeys[key])
       }
-      console.log(emit)
-      //console.log(Object.keys(this.selectedNodesKeys).join(','))
-      //this.$router.replace({ name: 'datastreams', query: { enabledCategories: Object.keys(this.selectedNodesKeys).join(',') }})
+      this.oldEnabledCategories = new_query_params.enabledCategories;
       this.$emit('selection', emit)
     }
   }
 
   mounted() {
     //this.getDatascreamsTree()
-    console.log(this.$route.query)
+    //this.query_changed(this.$route.query)
+
   }
 
   getPath(id:string){
@@ -103,14 +124,33 @@ export default class StreamTreeC extends Vue {
   }
 
   async selected(node: any) {
-    console.log(this.selectedNodesKeys)
-    if (node.active) {
-      delete this.selectedNodesKeys[node.key];
-      node.active = false;
-    } else {
-      this.selectedNodesKeys[node.key] = node._data;
-      node.active = true;
+
+    if(node.children){
+      if (node.active) {
+        for (let child of node.children) {
+          delete this.selectedNodesKeys[child.key];
+          child.active = false;
+        }
+        node.active = false;
+      }
+      else {
+          for(let child of node.children){
+            this.selectedNodesKeys[child.key] = child._data;
+            child.active = true;
+          }
+        node.active = true;
+      }
+
+    }else{
+      if (node.active) {
+        delete this.selectedNodesKeys[node.key];
+        node.active = false;
+      } else {
+        this.selectedNodesKeys[node.key] = node._data;
+        node.active = true;
+      }
     }
+
 
     /*let emit:any = [];
     for(let key in this.selectedNodesKeys){
@@ -119,21 +159,83 @@ export default class StreamTreeC extends Vue {
     }
     console.log(emit)
     console.log(Object.keys(this.selectedNodesKeys).join(','))*/
+
+    let query:any = {};
+    try{
+      //query = this.$route.query;
+      /*if(this.$route.query.enabledCategories){
+        query['enabledCategories'] = this.$route.query.enabledCategories
+      }*/
+      if(this.$route.query.coord){
+        query['coord'] = this.$route.query.coord
+      }
+      if(this.$route.query.zoom){
+        query['zoom'] = this.$route.query.zoom
+      }
+
+      query['enabledCategories'] = Object.keys(this.selectedNodesKeys).join(',');
+      //query['time'] = Math.random()
+    }
+    catch (e){
+      console.log(e)
+    }
+
+
     this.$router.replace({
       name: 'datastreams',
-      query: {enabledCategories: Object.keys(this.selectedNodesKeys).join(',')}
+      query: {...query}
+    }).catch(err => {
+      //console.log(err)
     })
+    /*this.$router.replace({
+      name: 'datastreams',
+      query: {enabledCategories: Object.keys(this.selectedNodesKeys).join(',')}
+    })*/
     //this.$emit('selection', emit)
 
   }
 
 
-  async getDatascreamsTree(datastreams: Datastreams) {
+  async getDatascreamsTree(datastreams: Array<Datastream>,things?:Array<Thing>) {
+
+
+
+    let ret: unknown[] = [];
+    //let groups = groupByCategory(datastreams)
+    let groups = groupByCategoryAndThing(datastreams,things)
+    for (const [key, value] of Object.entries(groups)) {
+
+      const v = value as Array<Datastream>;
+      let node = {
+        id: Math.random() * 100000,
+        text: key,
+        type: "FMM_DATASTREAM",
+        children: v.map((entry:Datastream)=>{
+          const spl:string[] = ((entry["@iot.id"]??'~')as string).split('~');
+          return {
+          id: Math.random() * 100000,
+          text: spl[0]+'~'+spl[1]??'',
+          type: "FMM_THING",
+          _data: entry,
+          key:entry["@iot.id"],
+          active: false
+        }}),
+        _data: value,
+        key: key,
+        active: false,
+        childs_shown:true
+      }
+      ret.push(node);
+    }
+    this.treeData = ret;
+    this.query_changed(this.$route.query,true);
+  }
+  async getDatascreamsTreeThings(things: Array<Thing>|undefined) {
     this.loading = true;
 
     this.loading = false;
     let ret: unknown[] = [];
-    let groups = groupByCategory(datastreams)
+    let groups = groupByCategory(things)
     for (const [key, value] of Object.entries(groups)) {
 
 
@@ -149,17 +251,12 @@ export default class StreamTreeC extends Vue {
       ret.push(node);
     }
     this.treeData = ret;
-    this.query_changed(this.$route.query);
+    this.query_changed(this.$route.query,true);
   }
-
   get isactive() {
-    console.log(this.selectedNodesKeys);
     return Object.keys(this.selectedNodesKeys)
   }
 
-  set isactive(val: any) {
-
-  }
 }
 
 
@@ -168,11 +265,11 @@ export default class StreamTreeC extends Vue {
 <style scoped lang="scss">
 
 .plane {
-  height: 100%;
+  /*height: 100%;*/
   z-index: 500;
   background: #3a3a3a;
   border-radius: 2px;
-  overflow-y: auto;
+  overflow-y: hidden;
   text-align: left;
   color: #d8d8d8;
   position: relative;
@@ -191,11 +288,14 @@ export default class StreamTreeC extends Vue {
 .leaf {
   padding-left: 15px;
   display: grid;
-  grid-template-columns: 50px 1fr;
+  grid-template-columns: 50px 1fr 50px;
   grid-template-rows: 45px;
   align-items: center;
   cursor: pointer;
 
+  .childs{
+    grid-column: 1 / 3;
+  }
   &.active {
     //background: #1b346fc7;
     background: rgb(27, 52, 111);

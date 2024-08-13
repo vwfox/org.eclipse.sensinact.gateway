@@ -11,7 +11,10 @@
 -->
 
 <template>
-  <div class="datapoint">
+  <div class="datapoint" v-if="isBool" :class="{'is_set':data,'unset':!data}">
+        <span v-if="data">!</span>
+  </div>
+  <div class="datapoint" v-else>
     {{data}} {{unit}}
   </div>
 </template>
@@ -24,16 +27,18 @@ export default class Datapoint extends Vue{
   private data = ''
   @Prop({default:()=>''}) readonly unit:any
   @Prop() readonly id:any
+  @Prop() readonly isBool!:boolean;
   mounted(){
     /*setInterval(()=>{
       console.log(this.obs)
     },1000)*/
   }
   @Watch('$sstore.obs.state.obs') handler(data:any){
-    console.log('obs_change')
+    //console.log(this.$sstore.obs.state.obs[this.id]);
     if(this.$sstore.obs.state.obs && this.$sstore.obs.state.obs[this.id] && this.$sstore.obs.state.obs[this.id].result){
-      this.data = this.$sstore.obs.state.obs[this.id].result;
 
+      this.data = this.$sstore.obs.state.obs[this.id].result;
+      console.log(this.data);
     }else{
       this.data = '';
     }

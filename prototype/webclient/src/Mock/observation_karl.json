@@ -1,0 +1,150 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type":"Feature",
+      "properties":{
+        "heading" : 57.123,
+        "speed" : 8.11,
+        "id":"3199579",
+        "classId" : 5
+      },
+      "geometry":{
+        "type":"Point",
+        "coordinates":
+        [
+          11.5847872,
+          50.9242948
+        ]
+
+      }
+    },
+    {
+      "type":"Feature",
+      "properties":{
+        "heading" : 237.085,
+        "speed" : 24.914,
+        "id":"3199619",
+        "classId" : 5
+      },
+      "geometry":{
+        "type":"Point",
+        "coordinates":
+        [
+          11.5845094,
+          50.9242348
+        ]
+
+      }
+    },
+    {
+      "type":"Feature",
+      "properties":{
+        "heading" : 237.255,
+        "speed" : 39.901,
+        "id":"3199619",
+        "classId" : 5
+      },
+      "geometry":{
+        "type":"Point",
+        "coordinates":
+        [
+          11.5841494,
+          50.9240809
+        ]
+
+      }
+    },
+    {
+      "type":"Feature",
+      "properties":{
+        "heading" : 237.255,
+        "speed" : 8.099,
+        "id":"3199611",
+        "classId" : 5
+      },
+      "geometry":{
+        "type":"Point",
+        "coordinates":
+        [
+          11.5851184,
+          50.9244292
+        ]
+
+      }
+    },
+    {
+      "type":"Feature",
+      "properties":{
+        "heading" : 59.484,
+        "speed" : 3.909,
+        "id":"3199588",
+        "classId" : 5
+      },
+      "geometry":{
+        "type":"Point",
+        "coordinates":
+        [
+          11.5846836,
+          50.9242527
+        ]
+
+      }
+    },
+    {
+      "type":"Feature",
+      "properties":{
+        "heading" : 58.245,
+        "speed" : 5.724,
+        "id":"3199581",
+        "classId" : 5
+      },
+      "geometry":{
+        "type":"Point",
+        "coordinates":
+        [
+          11.5847052,
+          50.9242625
+        ]
+
+      }
+    },
+    {
+      "type":"Feature",
+      "properties":{
+        "heading" : 57.123,
+        "speed" : 8.11,
+        "id":"3199579",
+        "classId" : 5
+      },
+      "geometry":{
+        "type":"Point",
+        "coordinates":
+        [
+          11.5847872,
+          50.9242948
+        ]
+
+      }
+    },
+    {
+      "type":"Feature",
+      "properties":{
+        "heading" : 56.404,
+        "speed" : 3.024,
+        "id":"3199634",
+        "classId" : 5
+      },
+      "geometry":{
+        "type":"Point",
+        "coordinates":
+        [
+          11.5847273,
+          50.9242757
+        ]
+
+      }
+    }
+
+  ]
+}

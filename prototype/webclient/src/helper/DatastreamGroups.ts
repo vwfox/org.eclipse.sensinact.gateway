@@ -12,10 +12,10 @@
  **********************************************************************/
 
 
-import {Datastream, Datastreams} from "../../openapi/client";
-
+import {Datastream, Datastreams, Thing} from "../../openapi/client";
+import config from '@/config/mqtt.json';
 export default function groupByName(datastreams:Datastreams){
-  let ret:any = {}
+  const ret:any = {}
 
   datastreams.value?.forEach((datastream:Datastream)=>{
     if(datastream.name) {
@@ -28,18 +28,61 @@ export default function groupByName(datastreams:Datastreams){
   return ret;
 }
 
-export function groupByCategory(datastreams:Datastreams){
-  let ret:any = {}
+export function groupByCategory(datastreams:Array<Datastream>|Array<Thing>|undefined){
+  const ret:any = {}
+  let type = "uncategorized";
+  console.log(datastreams)
+  if(datastreams){
+        datastreams.forEach((datastream:Datastream|Thing)=>{
+      //@ts-ignore
+          if(datastream.properties && datastream.properties['sensorthings.datastream.type']){
+            //@ts-ignore
+            type = datastream.properties["sensorthings.datastream.type"].toString();
+          }
+          if(datastream['@iot.id'] && datastream['@iot.id']?.toString().split('~').length>2){
+            type = datastream['@iot.id']?.toString().split('~')[2];
+          }
+          if(datastream.name && !config.DatastreamExclude.includes(type)) {
+            if (!ret[type]) {
+              ret[type] = [];
+            }
 
-  datastreams.value?.forEach((datastream:Datastream)=>{
-    //@ts-ignore
-    let type = datastream.properties['sensorthings.datastream.type'];
-    if(datastream.properties && type && datastream.name) {
-      if (!ret[type]) {
-        ret[type] = [];
+              ret[type].push(datastream);
+
+
+          }
+
+
+        })
+  }
+  return ret;
+}
+export function groupByCategoryAndThing(datastreams:Array<Datastream>,things?:Array<Thing>){
+  const ret:any = {}
+  let type = "uncategorized";
+  console.log(datastreams)
+  if(datastreams){
+    datastreams.forEach((datastream:Datastream)=>{
+      //@ts-ignore
+      if(datastream.properties && datastream.properties['sensorthings.datastream.type']){
+        //@ts-ignore
+        type = datastream.properties["sensorthings.datastream.type"].toString();
       }
-      ret[type].push(datastream);
-    }
-  })
+      if(datastream['@iot.id'] && datastream['@iot.id']?.toString().split('~').length>2){
+        type = datastream['@iot.id']?.toString().split('~')[2];
+      }
+      if(datastream.name && !config.DatastreamExclude.includes(type)) {
+        if (!ret[type]) {
+          ret[type] = [];
+        }
+
+        ret[type].push(datastream);
+
+
+      }
+
+
+    })
+  }
   return ret;
 }

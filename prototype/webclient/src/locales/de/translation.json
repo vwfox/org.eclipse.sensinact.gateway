@@ -31,6 +31,17 @@
     "NO2":"Stickstoffdioxid",
     "UV_index":"UV-Index (bearbeitet)",
     "soil_moisture": "Bodenfeuchte",
-    "air_qi": "Luft-Qualitäts-Index"
+    "air_qi": "Luft-Qualitäts-Index",
+    "color": "Ampeln",
+    "signalGroup": "Signalgruppe",
+    "type": "Type",
+    "location": "Location",
+    "model": "Model",
+    "modelPackageUri": "Model-URI",
+    "temperature":"Temperatur",
+    "traficam": "TraficCam",
+    "traficam_observedArea": "TraficCam(Viewport)",
+    "conflict": "Kollisionswarner",
+    "viewport": "Viewport"
   }
 }

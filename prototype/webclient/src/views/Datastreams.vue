@@ -27,58 +27,112 @@
       </b-field>-->
     </div>
     <div class="map_holder">
-      <l-map id="map" :zoom="zoom" :center="center" @click="deselect">
-        <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-        <v-marker-cluster :options="{spiderfyDistanceMultiplier:3.2,animate:true,animateAddingMarkers:true}"
+      <l-map id="map" :zoom="zoom" :center="center" @click="deselect" @update:center="updateCenter" @update:zoom="updateZoom" :max-zoom="21">
+        <l-tile-layer :url="url" :attribution="attribution" :options="{maxNativeZoom:19,
+        maxZoom:25}"></l-tile-layer>
+
+       <template v-if="observationsGeoJsonMqtt && $route.query.enabledCategories && $route.query.enabledCategories.includes('traficam')">
+          <l-geo-json  :geojson="observationsGeoJsonMqtt" :options="{'pointToLayer':pointToLayer}"  :options-style="styleP" ></l-geo-json>
+        </template><!--
+        <template v-if="campoints && $route.query.enabledCategories && $route.query.enabledCategories.includes('traficam')">
+          <l-geo-json  :geojson="campoints" :options="{'pointToLayer':camPointsSytle}"  :options-style="styleP" ></l-geo-json>
+        </template>
+        <template v-if="observationsGeoJsonMqttConfig && $route.query.enabledCategories && $route.query.enabledCategories.includes('traficam_observedArea')">
+          <l-geo-json  :geojson="observationsGeoJsonMqttConfig" :options="{'pointToLayer':pointToLayer, 'onEachFeature':tooltip}"  :options-style="styleC" ></l-geo-json>
+        </template>-->
+
+       <!-- <template v-if="observationsGeoJson">
+          <l-geo-json v-for="feature in observationsGeoJson"  :geojson="feature.result" :key="feature['@iot.id']"  :options="{'pointToLayer':pointToLayer}"  :options-style="styleP" ></l-geo-json>
+        </template>-->
+
+        <!--<l-geo-json v-for="features in geojson"  :geojson="features.location" :key="features['@iot.id']" :options="{'coordsToLatLng':swapCoords}" :options-style="style"></l-geo-json>-->
+
+       <l-geo-json v-for="features in geojson"  :geojson="features.location" :key="features['@iot.id']+'_area'"  :options-style="style(features['@iot.id'])"></l-geo-json>
+
+       <!-- <v-marker-cluster :options="{spiderfyDistanceMultiplier:3.2,animate:true,animateAddingMarkers:true}"
                           ref="clusterRef" v-if="points">
           <custom-marker @click.native="(ev)=>{ev.stopImmediatePropagation();markerWasClicked(point)}"
-                          :marker="ret(point.location.coordinates)" v-for="point in points" :key="point['dsid']"
+                          :marker="ret(point.location.coordinates)" v-for="point in points" :key="point['@iot.id']"
                           :lat-lng="res(point.location.coordinates)">
-            <!--<l-icon class-name="custom-div-icon">-->
+
 
             <div class='marker-pin' :class="{'selected':point===selected}">
               <div class="round">
                 <svg-icon type="mdi"
                           :size="24"
-                          v-if="getPath([datastreamsbyID[point['dsid']].properties['sensorthings.datastream.type']])"
-                          :path="getPath([datastreamsbyID[point['dsid']].properties['sensorthings.datastream.type']])"
+                          v-if="getPath([datastreamsbyID[point['@iot.id']].properties['sensorthings.datastream.type']])"
+                          :path="getPath([datastreamsbyID[point['@iot.id']].properties['sensorthings.datastream.type']])"
                           class="marker_svg"></svg-icon>
                 <div class="svg_icon dark"
-                      :class="[datastreamsbyID[point['dsid']].properties['sensorthings.datastream.type']]"
-                      v-else-if="datastreamsbyID[point['dsid']] && datastreamsbyID[point['dsid']].properties['sensorthings.datastream.type']">
+                      :class="[datastreamsbyID[point['@iot.id']].properties['sensorthings.datastream.type']]"
+                      v-else-if="datastreamsbyID[point['@iot.id']] && datastreamsbyID[point['@iot.id']].properties['sensorthings.datastream.type']">
                 </div>
-                <!--<div class="add" v-if="datastreamsbyID[point['dsid']].properties.originalName">
-                  {{datastreamsbyID[point['dsid']].properties.originalName}}
-                </div>-->
+
               </div>
             </div>
-            <!--          <div class="marker-value">
-                        <div class="span" v-if="obs[point['dsid']]">
-                          <template v-if="obs[point['dsid']].result">
-                          {{obs[point['dsid']].result}}
-                          </template>
-                        </div>
-                        <div class="unit" v-if="datastreamsbyID[point['dsid']] && datastreamsbyID[point['dsid']].unitOfMeasurement">
-                          {{datastreamsbyID[point['dsid']].unitOfMeasurement.name}}
-                        </div>
-                      </div>-->
 
             <div class="marker-value">
-              <Datapoint :id="point['dsid']" :unit="datastreamsbyID[point['dsid']].unitOfMeasurement.name"></Datapoint>
-              <!--<div class="span" v-if="point['data'] && point['data'].result">
-                {{point['data'].result}}
-
-              </div>-->
+              <Datapoint :id="point['@iot.id']" :unit="datastreamsbyID[point['@iot.id']].unitOfMeasurement.name"></Datapoint>
             </div>
 
-            <!--</l-icon>-->
+
 
           </custom-marker>
+        </v-marker-cluster>-->
+        <v-marker-cluster :options="{spiderfyDistanceMultiplier:3.2,animate:true,animateAddingMarkers:true,zoomToBoundsOnClick:false,disableClusteringAtZoom:18}"
+                          ref="clusterRef2" v-if="centerPoints && centerPoints.length>0">
+
+          <template v-for="point in centerPoints" >
+          <custom-marker @click.native="(ev)=>{ev.stopImmediatePropagation();markerWasClicked(point)}" :key="point['@iot.id']+'markr'"
+                         :marker="ret(point.location.geometry.coordinates)"
+                         :lat-lng="ret(point.location.geometry.coordinates)" v-if="point.location.geometry">
+
+
+           <!-- <div class='marker-pin' :class="{'selected':point===selected}">-->
+             <!-- <div class="round">-->
+            <div class='marker-pin' :class="{'selected':point===selected}"  v-if="point['@iot.id'].split('~').reverse()[0]!=='color'">
+              <div class="round" v-if="point['@iot.id'].split('~').reverse()[0]!='color'">
+                <svg-icon type="mdi"
+                          :size="24"
+                          v-if="getPath(point['@iot.id'].split('~').reverse()[0])"
+                          :path="getPath(point['@iot.id'].split('~').reverse()[0])"
+                          class="marker_svg"></svg-icon>
+                <div class="svg_icon dark"
+                     :class="point['@iot.id'].split('~').reverse()[0]"
+                     v-else-if="point['@iot.id'].split('~').reverse()[0]">
+                </div>
+
+              </div>
+            </div>
+                <div class="marker-value" @click="(ev)=>{ev.stopImmediatePropagation();markerWasClicked(point)}" :class="point['@iot.id'].split('~').reverse()[0]">
+
+
+                  <Datapoint :id="point['@iot.id']" :unit="''" :is-bool="point['@iot.id'].split('~').reverse()[0]=='conflict'"></Datapoint>
+
+
+                </div>
+              <!--</div>-->
+          <!--  </div>-->
+
+
+
+
+
+
+
+          </custom-marker>
+          </template>
         </v-marker-cluster>
+
       </l-map>
+
+
     </div>
     <div class="sidebar_holder absolute">
+      <perfect-scrollbar>
       <StreamTree ref="streamTree" @selection="select"></StreamTree>
+      </perfect-scrollbar>
+
     </div>
     <div class="propertie_holder absolute" v-if="selected!==null">
       <b-button class="absbtn" type="is-text" rounded size="is-small"
@@ -92,7 +146,7 @@
 
 <script lang="ts">
 import {Component, Vue, Watch} from "vue-property-decorator";
-import {LIcon, LMap, LMarker, LTileLayer, LWMSTileLayer} from "vue2-leaflet";
+import {LIcon, LMap, LMarker, LTileLayer, LWMSTileLayer,LGeoJson} from "vue2-leaflet";
 import {
   LocationsApi,
   Location,
@@ -101,7 +155,7 @@ import {
   Datastream,
   ThingsApi,
   DatastreamsApi,
-  ObservationsApi, Observations, Datastreams
+  ObservationsApi, Observations, Datastreams, Things, Thing
 } from "../../openapi/client";
 import PropertiesC from "@/components/PropertiesView/Properties.vue";
 import {BASE_PATH} from "../../openapi/client/base";
@@ -109,7 +163,7 @@ import {getBaseUrl, setBaseUrl} from "@/config/base";
 import StreamTree from "@/components/StreamTree.vue";
 import {AxiosResponse} from "axios";
 //@ts-ignore
-import Vue2LeafletMarkerCluster from 'vue2-leaflet-markercluster';
+
 import Vue2LeafletMarkercluster from "vue2-leaflet-markercluster/Vue2LeafletMarkercluster.vue";
 //@ts-ignore
 import CustomMarker from 'vue-leaflet-custom-marker';
@@ -117,6 +171,12 @@ import Datapoint from "@/components/Datapoint.vue";
 import { getPath } from "@/helper/SVGPaths";
 //@ts-ignore
 import SvgIcon from '@jamescoyle/vue-icon';
+
+import L from "leaflet";
+
+import * as turf from '@turf/turf'
+import conf from '@/config/mqtt.json';
+import MqttTree from "@/components/MqttTree.vue";
 
 export interface LocationsPlus {
   dsid: String | undefined
@@ -131,6 +191,7 @@ export interface LocationsPlus {
     LTileLayer,
     LMarker,
     LIcon,
+    LGeoJson,
     LWMSTileLayer,
     'v-marker-cluster': Vue2LeafletMarkercluster,
     CustomMarker,
@@ -138,42 +199,143 @@ export interface LocationsPlus {
   }
 })
 export default class DatastreamsV extends Vue {
-  private url = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  //private url = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+
+  private url = 'https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png'
   //private url = 'https://map.jena.de/wms/kartenportal';
   private attribution =
-    '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors';
-  private zoom = 15;
+    '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+  private zoom: number = 14;
 
   private center = [50.93115286, 11.60392726];
   private markerLatLng = [55.8382551745062, -4.20119980206699]
-  private points: Array<Location> | undefined = [];
+  private locations: Array<Location> | undefined = [];
   private selected: Location | null = null;
   private obs: any = {};
   private treeData: unknown = null;
   //private baseurl:string = 'https://sensors.bgs.ac.uk/FROST-Server';
   private baseurl: string = getBaseUrl();
-  private datastreams: Datastreams | null = null;
+  private datastreams: Array<Datastream> | null = null;
+  private things: Array<Thing> | undefined = [];
   private datastreamsbyID: { [key: string]: Datastream } = {};
   private timer: any = null;
   private selectedData: any = null;
-
+  private mqtt: Worker | null = null;
+  campoints = null;
+  observationsGeoJsonMqtt = null;
+  observationsGeoJsonMqttConfig = null;
+  private mqttmenu = {};
   async mounted() {
+    //this.$sstore.mqtt.connect();
+    //this.$sstore.mqtt.subscribe();
+     this.mqtt = new Worker(new URL("@/worker/mqtt.ts", import.meta.url));
+    this.mqtt.postMessage('connect');
+    this.mqtt.postMessage('subscribe');
+    this.mqtt.onmessage = (evt)=>{
+      console.log('got msg')
+      this.observationsGeoJsonMqtt =  {
+        type: "FeatureCollection",
+        features: Object.values(evt.data.features)
+      }as any
+      /*this.observationsGeoJsonMqttConfig =  {
+        type: "FeatureCollection",
+        features: Object.values(evt.data.configs)
+      }as any
+      this.campoints=  {
+        type: "FeatureCollection",
+        features: Object.values(evt.data.cams)
+      }as any
+      this.mqttmenu = {cams:evt.data.cams,configs:evt.data.configs};
+      */
+
+      //console.log(this.mqttmenu)
+
+    }
+    //this.SetobservationsGeoJsonMqtt();
+    let query = this.$route.query;
+    if (this.$route.query.zoom) {
+      try {
+        let zoom = parseInt(this.$route.query.zoom as string);
+        if (zoom > 1 && zoom < 19) {
+          this.zoom = zoom;
+        }
+      } catch (e) {
+        //parse Error
+      }
+
+    }
+    if (this.$route.query.coord) {
+      try {
+        let splitArr = (this.$route.query.coord as string).split(',');
+        let lat = parseFloat(splitArr[0]);
+        let lng = parseFloat(splitArr[1]);
+        if (lat > -90 && lat < 90 && lng > -180 && lng < 180) {
+          this.center = [lat, lng];
+        }
+      } catch (e) {
+        //parse Error
+      }
+
+    }
     await this.load();
   }
 
   async load() {
+    console.log('load');
     ///@ts-ignore
     this.datastreams = (await new DatastreamsApi(new Configuration({basePath: getBaseUrl()}))
-      .v11DatastreamsGet()).data as Datastreams
-    (this.$refs.streamTree as StreamTree).getDatascreamsTree(this.datastreams)
-    if (this.datastreams.value) {
-      for (let datastream of this.datastreams.value) {
+      .v11DatastreamsGet()).data.value as Array<Datastream>;
+
+    //@ts-ignore
+    //this.datastreams = dataStreamMock.value as Array<Datastream>;
+
+    this.things = (await new ThingsApi(new Configuration({basePath: getBaseUrl()}))
+      .v11ThingsGet()).data.value;
+
+    // (this.$refs.streamTree as StreamTree).getDatascreamsTreeThings(this.things);
+
+    if (!this.datastreams) {
+      this.datastreams=[];
+    }
+    this.datastreams = this.datastreams.map(datastream=>{
+      if(datastream.observedArea && ['Polygon'].includes((datastream.observedArea as any).type)){
+        let geometry = datastream.observedArea;
+        (datastream.observedArea as any) = {
+          type:"Feature",
+          properties:{},
+          geometry:geometry
+        }
+      }
+      return datastream;
+    }) as Datastream[];
+    /*this.datastreams?.push(
+      {
+        "name": "isConflict",
+        "description": "No description",
+        "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+        "unitOfMeasurement": {
+          "name": null,
+          "symbol": null,
+          "definition": null
+        },
+        "properties": {},
+        "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(FelsenkellerRadAuto~conflict~conflict)",
+        "@iot.id": "FelsenkellerRadAuto~conflict~conflict",
+        "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(FelsenkellerRadAuto~conflict~isConflict)/Observations",
+        "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(FelsenkellerRadAuto~conflict~isConflict)/ObservedProperty",
+        "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(FelsenkellerRadAuto~conflict~isConflict)/Sensor",
+        "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(FelsenkellerRadAuto~conflict~isConflict)/Thing"
+
+      } as any as Datastream
+    );*/
+      (this.$refs.streamTree as StreamTree).getDatascreamsTree(this.datastreams!.concat([{'@iot.id':'Thing~Traficam~traficam','name':'Traficam'} as unknown as Datastream]),this.things);
+      for (let datastream of this.datastreams) {
         //@ts-ignore
         this.datastreamsbyID[datastream["@iot.id"]] = datastream;
       }
     }
 
-  }
+
 
   deselect() {
     this.selected = null;
@@ -192,53 +354,172 @@ export default class DatastreamsV extends Vue {
     }
   }
 
+  rev(arr: any) {
+    return {
+      lat: arr[0],
+      lng: arr[1]
+    }
+  }
+
   connect() {
     setBaseUrl(this.baseurl)
     this.load();
 
   }
 
+  checkFeatureCollectionRaw(point: any) {
+    if (!point.type) return false;
+    if (point.type !== 'FeatureCollection') return false;
+
+    return true;
+  }
+
+  checkFeatureCollection(point: any) {
+    if (!point.location) return false;
+    if (!point.location.type) return false;
+    if (! ['FeatureCollection','Point','LineString','Polygon','MultiPoint','MultiLineString','MultiPolygon','Feature'].includes(point.location.type)) return false;
+
+    return true;
+  }
+
+  checkPoint(point: any) {
+    if (!point.location) return false;
+    if (!point.location.latitude) return false;
+    if (!point.location.longitude) return false;
+
+
+    return true;
+  }
+
+
+  get geojson() {
+
+    if (!this.locations || this.locations.length==0) return [];
+    const map = this.locations.filter(this.checkFeatureCollection);
+    console.log(map)
+    return map;
+  }
+
+  get observationsGeoJson() {
+    try {
+      let ret = Object.values(this.$sstore.obs.state.obs).filter((e: any) => {
+        return this.checkFeatureCollectionRaw(e.result);
+      });
+      if (!ret) return [];
+      return ret;
+    } catch (r) {
+      console.log(r);
+      return []
+    }
+  }
+
+  get points() {
+    if (!this.locations) return [];
+    let map = this.locations.filter(this.checkPoint);
+    return map;
+  }
+
+  get centerPoints() {
+
+      return this.geojson.map(e => {
+        let f = {...e};
+
+        try {
+          if(e.location){
+            if((e.location as any).type=='FeatureCollection'){
+              (e.location! as any).properties={} as any;
+            }
+
+            //@ts-ignore
+            //if(e.location.features)
+            //f.location = turf.center(e.location.features[0]);
+            f.location = turf.center(e.location);
+            console.log(f)
+          }
+        } catch (err) {
+          console.log(err);
+
+        }
+        return f;
+      })
+
+  }
+
+
   markerWasClicked(point: Location & LocationsPlus) {
     this.selected = point;
     //@ts-ignore
-    this.selectedData = {data: this.datastreamsbyID[point['dsid']], type: 'FMM_DATASTREAM'}
+    this.selectedData = {data: this.datastreamsbyID[point['@iot.id']], type: 'FMM_DATASTREAM'}
   }
 
 
   async select(model: Datastream[]) {
-    this.points = undefined;
+    console.log('model')
+    console.log(model)
+    this.locations = [];
     let proms: Promise<any>[] = [];
     model.forEach((datastream: Datastream) => {
       if (datastream && datastream["@iot.id"]) {
+        if (datastream.observedArea) {
+          //@ts-ignore
 
-        //@ts-ignore
-        proms.push(new Promise(async (res, rej) => {
-          try {
-            //@ts-ignore
-            let result = await new ThingsApi(new Configuration({basePath: getBaseUrl()})).v11ThingsEntityIdLocationsGet((datastream["@iot.id"].toString().split('~')[0]));
-            if (result.data && result.data.value && result.data.value[0]) {
+          let loctype = {...datastream} as any;
+          loctype.observedArea['properties'] = {"@iot.id": datastream["@iot.id"]}
+          loctype["@iot.id"] = datastream["@iot.id"];
+          loctype['location'] = {
+            type: "FeatureCollection",
+            features: [loctype.observedArea],
+          };
+          this.locations?.push(loctype);
+        } else {
+
+
+          //@ts-ignore
+          proms.push(new Promise(async (res, rej) => {
+            try {
               //@ts-ignore
-              (result.data.value[0] as LocationsPlus)['dsid'] = datastream["@iot.id"];
+              let result = await new ThingsApi(new Configuration({basePath: getBaseUrl()})).v11ThingsEntityIdLocationsGet((datastream["@iot.id"].toString().split('~')[0]));
+              if (result.data && result.data.value && result.data.value[0]) {
+                //@ts-ignore
+                (result.data.value[0] as LocationsPlus)['@iot.id'] = datastream["@iot.id"];
+              }
+              res(result);
+            } catch (e) {
+              rej(e)
             }
-            res(result);
-          } catch (e) {
-            rej(e)
-          }
-        }));
+          }));
+        }
       }
     })
     let thingsLoaction: AxiosResponse<Locations & LocationsPlus>[] = await Promise.all(proms);
 
-    this.points = thingsLoaction.map((e: AxiosResponse<Locations & LocationsPlus>) => {
+    this.locations = this.locations.concat(
+      thingsLoaction.map((e: AxiosResponse<Locations & LocationsPlus>) => {
       return (e.data.value![0])
-    });
-    this.$sstore.obs.setPoints(this.points);
-    this.$sstore.obs.getDataForPoints();
-    if (this.points.length > 0) {
-      this.$sstore.obs.settimer();
-    } else {
-      this.$sstore.obs.clearTimer();
+    })
+    );
+    console.log('setPoints');
+
+    //this.locations.push({"@iot.id": "karl"} as Location)
+
+    try{
+      this.$sstore.obs.setPoints(this.locations);
+      this.$sstore.obs.getDataForPoints();
+      if (this.locations.length > 0) {
+        this.$sstore.obs.settimer();
+      } else {
+        this.$sstore.obs.clearTimer();
+      }
+    }catch (e){
+      console.log(e);
     }
+
+    if(this.$refs.clusterRef2){
+      //@ts-ignore
+      this.$refs.clusterRef2!.mapObject.refreshClusters();
+    }
+
+
 
 
   }
@@ -246,8 +527,224 @@ export default class DatastreamsV extends Vue {
   beforeDestroy() {
     this.$sstore.obs.clearTimer();
   }
-  getPath(id:string){
-    return getPath(id[0])
+
+  getPath(id: string) {
+    return getPath(id)
+  }
+
+  updateCenter(center: any) {
+    let query: any = {}
+    if (this.$route.query.enabledCategories) {
+      query['enabledCategories'] = this.$route.query.enabledCategories
+    }
+    if (this.$route.query.coord) {
+      query['zoom'] = this.$route.query.zoom
+    }
+    query['coord'] = center['lat'] + ',' + center['lng']
+
+    this.$router.replace({
+      name: 'datastreams',
+      query: query
+    }).catch(err => {
+    })
+
+  }
+
+  updateZoom(zoom: any) {
+    let query: any = {}
+    if (this.$route.query.enabledCategories) {
+      query['enabledCategories'] = this.$route.query.enabledCategories
+    }
+    if (this.$route.query.coord) {
+      query['coord'] = this.$route.query.coord
+    }
+    query['zoom'] = zoom
+
+    this.$router.replace({
+      name: 'datastreams',
+      query: query
+    }).catch(err => {
+    })
+  }
+
+  swapCoords(coords: any) {
+    //                    latitude , longitude, altitude
+    //return new L.LatLng(coords[1], coords[0], coords[2]); //Normal behavior
+    return new L.LatLng(coords[0], coords[1], coords[2]);
+  }
+
+   style(featureid:any) {
+
+
+    if(featureid.split('~').reverse()[0]=='conflict' && this.$sstore.obs.state.obs[featureid]){
+      console.log(this.$sstore.obs.state.obs[featureid]);
+      if(this.$sstore.obs.state.obs[featureid].result){
+        return (feature: any) => {
+          return {
+            weight: 2,
+            color: "rgba(253,193,0,0.6)",
+            opacity: 1,
+            fillColor: 'rgba(253,193,0,0.6)',
+            fillOpacity: 0.8
+          };
+        };
+      }else {
+        return {
+          weight: 2,
+          color: "rgba(222,220,220,0)",
+          opacity: 1,
+          fillColor: '#cccccc',
+          fillOpacity: 0.8
+        };
+      }
+    }
+    //console.log(featureid)
+    return (feature: any) => {
+      return {
+        weight: 2,
+        color: "#ECEFF1",
+        opacity: 1,
+        fillColor: '#ccc',
+        fillOpacity: 0.8
+      };
+    };
+  }
+
+  get pointToLayer() {
+    return (feature: any, latlng: any) => {
+
+      let div = document.createElement("div");
+      let inner = document.createElement("div");
+      let icon = document.createElement("div");
+      icon.classList.add('icon');
+      div.classList.add('marker');
+      inner.classList.add('inner');
+      div.append(inner);
+      div.append(icon);
+      if (feature.properties.heading) {
+
+        const deg = (feature.properties.heading ?? 0) - 45;
+        inner.style.webkitTransform = 'rotate(' + deg + 'deg)';
+        //div.style.mozTransform    = 'rotate('+deg+'deg)';
+        //div.style.msTransform     = 'rotate('+deg+'deg)';
+        //div.style.oTransform      = 'rotate('+deg+'deg)';
+        inner.style.transform = 'rotate(' + deg + 'deg)';
+      }
+      if(feature.properties.type){
+        inner.classList.add('type_'+feature.properties.type);
+        let innerHTML = feature.properties.type;
+        switch (feature.properties.type){
+          case '0':
+            innerHTML = '<i class="mdi  mdi-walk"> </i>'
+            break;
+
+          case '1':
+          case '2':
+          case '3':
+            innerHTML = '<i class="mdi mdi-bike"> </i>'
+            break;
+          case '5':
+          case '6':
+            innerHTML = '<i class="mdi mdi-car-side"> </i>'
+            break;
+          case '7':
+            innerHTML = '<i class="mdi mdi-van-passenger"> </i>'
+            break;
+          case '10':
+          case '11':
+          case '12':
+            innerHTML = '<i class="mdi mdi-truck"> </i>'
+            break;
+          case '14':
+            innerHTML = '<i class="mdi mdi-bus-side"> </i>'
+            break;
+
+
+        }
+        icon.innerHTML = innerHTML;
+      }
+
+      return new L.Marker(latlng, {
+        icon:
+          L.divIcon({className: 'my-div-icon', html: div})
+      });
+    }
+  }
+
+  get styleP() {
+
+    return (feature: any) => {
+      return {
+        weight: 2,
+        color: "#ECEFF1",
+        opacity: 1,
+        fillColor: '#ccc',
+        fillOpacity: 0.8
+      };
+    };
+  }
+
+  get styleC() {
+
+    return (feature: any) => {
+      return {
+        weight: 2,
+        color: "#8c8c8c",
+
+        opacity: 1,
+        fillColor: '#e3e3e3',
+        fillOpacity: 0.5
+      };
+    };
+  }
+  get camPointsSytle() {
+
+    return (feature: any, latlng: any) => {
+      let wrapper = document.createElement("div");
+      let div = document.createElement("div");
+      let inner = document.createElement("div");
+      let icon = document.createElement("div");
+      wrapper.classList.add('marker-wrapper','extSytle');
+      icon.classList.add('icon');
+      div.classList.add('marker-pin');
+      inner.classList.add('inner','type_cam','round');
+      icon.innerHTML = '<i class="mdi  mdi-camera-wireless"> </i>';
+      div.append(inner);
+      inner.append(icon);
+      wrapper.append(div);
+
+      return new L.Marker(latlng, {
+        icon:
+          L.divIcon({className: 'my-div-icon', html: wrapper})
+      });
+    };
+  }
+
+  SetobservationsGeoJsonMqtt() {
+
+    window.setInterval(()=>{
+      this.observationsGeoJsonMqtt =  {
+        type: "FeatureCollection",
+        features: Object.values(this.$sstore.mqtt.state.features)
+      }as any
+    },conf.renderIntervall)
+
+  }
+  tooltip =  (feature:any, layer:any)=> {
+    //console.log(feature)
+    layer.bindTooltip(feature.properties.id, {
+      direction: "left",
+      permanent: true,
+      className: 'labelstyle'
+    });
+    //layer.bindPopup("My popup content");
+  }
+
+  get isSelected(){
+    return (point:any)=> {
+      const arr = point['@iot.id'].splitt('~');
+      return
+    }
   }
 }
 </script>
@@ -306,7 +803,9 @@ export default class DatastreamsV extends Vue {
   left: 50%;
   top: 50%;
   margin: -15px 0 0 -15px;
-  box-shadow: -8px 15px 15px 0px rgb(0 0 0 / 43%)
+  box-shadow: -8px 15px 15px 0px rgb(0 0 0 / 43%);
+
+
 }
 
 .marker-pin.selected {
@@ -366,6 +865,33 @@ export default class DatastreamsV extends Vue {
   border-radius: 21px;
   /* box-shadow: 3px 14px 15px 0px rgba(0, 0, 0, 0.43); */
   font-size: 16px;
+  &.color{
+
+    left: -35px;
+    top: -1px;
+    transform: rotate(-90deg);
+  }
+  &.conflict {
+    border:none;
+    padding:0;
+    .is_set{
+      //animation: blinker 2s step-start infinite;
+    border-radius:100%;
+
+      width:24px;
+      font-weight:500;
+    //border: 1px dashed #bdbdbd;
+    background: #e4a53b;
+
+    }
+
+
+    /* box-shadow: 3px 14px 15px 0px rgba(0, 0, 0, 0.43); */
+
+  }
+  &.viewport{
+    display:none;
+  }
 }
 
 .round {
@@ -461,7 +987,70 @@ export default class DatastreamsV extends Vue {
 }
 </style>
 <style lang="scss">
+.extSytle{
 
+
+  .round {
+    width: 34px;
+    height: 34px;
+    border-radius: 100%;
+    transform: rotate(45deg);
+    margin: 3px;
+    background: #ffffff;
+    display: flex;
+    font-size: 21px;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .marker-pin {
+    width: 40px;
+    height: 40px;
+    border-radius: 50% 50% 50% 0;
+    background: #002770;
+    position: absolute;
+    transform: rotate(-45deg);
+    left: 50%;
+    top: 50%;
+    margin: -15px 0 0 -15px;
+    box-shadow: -8px 15px 15px 0px rgb(0 0 0 / 43%);
+
+
+  }
+
+  .marker-pin.selected {
+    .round {
+      background: #002770;
+    }
+
+    .svg_icon {
+      &.dark {
+        background: #fcfcfc;
+      }
+    }
+
+  }
+
+  // to draw white circle
+  .marker-pin::after {
+    content: "";
+    width: 24px;
+    height: 24px;
+    margin: 3px 0 0 -12px;
+    //background: #fff;
+    position: absolute;
+    border-radius: 50%;
+    transform: rotate(-45deg);
+    //box-shadow: inset 0px 0px 3px 0px #00000078;
+  }
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
 #app {
   .marker-cluster {
     background-color: rgb(27 52 111 / 19%);
@@ -472,5 +1061,46 @@ export default class DatastreamsV extends Vue {
     }
   }
 }
+.marker{
 
+  //box-shadow: 5px 3px 9px rgba(0, 0, 0, 0.2980392157);
+  //width: 25px;
+  box-shadow: 5px 3px 6px -1px rgb(0 0 0 / 45%);
+  height: 25px;
+  /* background: transparent; */
+  border-radius: 100%;
+  .inner{
+    width:25px;
+    height: 25px;
+    background: #2058a2;
+    border-top-left-radius: 100%;
+    border-bottom-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+
+    &.type_cam{ //Pad
+      background: rgba(126, 194, 243);
+      border-radius: 0;
+    }
+
+    &.type_0{ //Pad
+      background: #2058a2;
+    }
+    &.type_1, &.type_2, &.type_3{ //bike
+      background: #6820a2;
+    }
+    &.type_4, &.type_5, &.type_6, &.type_7{ //car
+      background: #20a29e;
+    }
+    &.type_8, &.type_9, &.type_10, &.type_11,&.type_12{ //car
+      background: #a24720;
+    }
+  }
+  .icon{
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #fff;
+    font-size: 21px;
+  }
+}
 </style>
