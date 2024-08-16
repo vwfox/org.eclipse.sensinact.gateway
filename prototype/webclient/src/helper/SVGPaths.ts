@@ -52,6 +52,8 @@ export function getPath(id: string) {
       return mdiCamera
     case 'conflict':
       return mdiHazardLights
+    case 'TrafiCam':
+      return mdiCamera
     default:
       return null
   }

@@ -31,54 +31,18 @@
         <l-tile-layer :url="url" :attribution="attribution" :options="{maxNativeZoom:19,
         maxZoom:25}"></l-tile-layer>
 
-       <template v-if="observationsGeoJsonMqtt && $route.query.enabledCategories && $route.query.enabledCategories.includes('traficam')">
-          <l-geo-json  :geojson="observationsGeoJsonMqtt" :options="{'pointToLayer':pointToLayer}"  :options-style="styleP" ></l-geo-json>
-        </template><!--
-        <template v-if="campoints && $route.query.enabledCategories && $route.query.enabledCategories.includes('traficam')">
-          <l-geo-json  :geojson="campoints" :options="{'pointToLayer':camPointsSytle}"  :options-style="styleP" ></l-geo-json>
+
+        <template  v-for="(geoJsonTragicLight,key) in observationsGeoJsonMqtt">
+          <l-geo-json  :geojson="geoJsonTragicLight" :options="{'pointToLayer':pointToLayer}" v-bind:key="key"
+                       :options-style="styleP"
+                       v-if=" $route.query.enabledTraficLights && $route.query.enabledTraficLights.includes(key.toString())"></l-geo-json>
         </template>
-        <template v-if="observationsGeoJsonMqttConfig && $route.query.enabledCategories && $route.query.enabledCategories.includes('traficam_observedArea')">
-          <l-geo-json  :geojson="observationsGeoJsonMqttConfig" :options="{'pointToLayer':pointToLayer, 'onEachFeature':tooltip}"  :options-style="styleC" ></l-geo-json>
-        </template>-->
 
-       <!-- <template v-if="observationsGeoJson">
-          <l-geo-json v-for="feature in observationsGeoJson"  :geojson="feature.result" :key="feature['@iot.id']"  :options="{'pointToLayer':pointToLayer}"  :options-style="styleP" ></l-geo-json>
-        </template>-->
 
-        <!--<l-geo-json v-for="features in geojson"  :geojson="features.location" :key="features['@iot.id']" :options="{'coordsToLatLng':swapCoords}" :options-style="style"></l-geo-json>-->
 
        <l-geo-json v-for="features in geojson"  :geojson="features.location" :key="features['@iot.id']+'_area'"  :options-style="style(features['@iot.id'])"></l-geo-json>
 
-       <!-- <v-marker-cluster :options="{spiderfyDistanceMultiplier:3.2,animate:true,animateAddingMarkers:true}"
-                          ref="clusterRef" v-if="points">
-          <custom-marker @click.native="(ev)=>{ev.stopImmediatePropagation();markerWasClicked(point)}"
-                          :marker="ret(point.location.coordinates)" v-for="point in points" :key="point['@iot.id']"
-                          :lat-lng="res(point.location.coordinates)">
 
-
-            <div class='marker-pin' :class="{'selected':point===selected}">
-              <div class="round">
-                <svg-icon type="mdi"
-                          :size="24"
-                          v-if="getPath([datastreamsbyID[point['@iot.id']].properties['sensorthings.datastream.type']])"
-                          :path="getPath([datastreamsbyID[point['@iot.id']].properties['sensorthings.datastream.type']])"
-                          class="marker_svg"></svg-icon>
-                <div class="svg_icon dark"
-                      :class="[datastreamsbyID[point['@iot.id']].properties['sensorthings.datastream.type']]"
-                      v-else-if="datastreamsbyID[point['@iot.id']] && datastreamsbyID[point['@iot.id']].properties['sensorthings.datastream.type']">
-                </div>
-
-              </div>
-            </div>
-
-            <div class="marker-value">
-              <Datapoint :id="point['@iot.id']" :unit="datastreamsbyID[point['@iot.id']].unitOfMeasurement.name"></Datapoint>
-            </div>
-
-
-
-          </custom-marker>
-        </v-marker-cluster>-->
         <v-marker-cluster :options="{spiderfyDistanceMultiplier:3.2,animate:true,animateAddingMarkers:true,zoomToBoundsOnClick:false,disableClusteringAtZoom:18}"
                           ref="clusterRef2" v-if="centerPoints && centerPoints.length>0">
 
@@ -129,9 +93,12 @@
 
     </div>
     <div class="sidebar_holder absolute">
+
       <perfect-scrollbar>
-      <StreamTree ref="streamTree" @selection="select"></StreamTree>
+        <StreamTree ref="streamTree" @selection="select"></StreamTree>
+        <MqttList :items="mqtt_items" ></MqttList>
       </perfect-scrollbar>
+
 
     </div>
     <div class="propertie_holder absolute" v-if="selected!==null">
@@ -176,7 +143,7 @@ import L from "leaflet";
 
 import * as turf from '@turf/turf'
 import conf from '@/config/mqtt.json';
-import MqttTree from "@/components/MqttTree.vue";
+import MqttList from "@/components/MqttList.vue";
 
 export interface LocationsPlus {
   dsid: String | undefined
@@ -195,7 +162,8 @@ export interface LocationsPlus {
     LWMSTileLayer,
     'v-marker-cluster': Vue2LeafletMarkercluster,
     CustomMarker,
-    SvgIcon
+    SvgIcon,MqttList
+
   }
 })
 export default class DatastreamsV extends Vue {
@@ -225,18 +193,34 @@ export default class DatastreamsV extends Vue {
   observationsGeoJsonMqtt = null;
   observationsGeoJsonMqttConfig = null;
   private mqttmenu = {};
+  private mqtt_items = [];
   async mounted() {
-    //this.$sstore.mqtt.connect();
-    //this.$sstore.mqtt.subscribe();
-     this.mqtt = new Worker(new URL("@/worker/mqtt.ts", import.meta.url));
+
+    this.mqtt = new Worker(new URL("@/worker/mqtt.ts", import.meta.url));
     this.mqtt.postMessage('connect');
     this.mqtt.postMessage('subscribe');
     this.mqtt.onmessage = (evt)=>{
-      console.log('got msg')
-      this.observationsGeoJsonMqtt =  {
+
+      let types:any = {};
+      let MqttItems:any = [];
+      /*Object.values(evt.data.features).forEach((feature:any)=>{
+        if(feature.properties && feature.properties.thing){
+          types[feature.properties.thing]=1;
+        }
+      })*/
+      Object.keys(evt.data.features).forEach((r:any)=>{
+        MqttItems.push({name:r,id:r,cat:'TrafiCam',active:false})
+      })
+      this.mqtt_items = MqttItems;
+      for( const [key, value] of Object.entries(evt.data.features)){
+        evt.data.features[key].features = Object.values(evt.data.features[key].features);
+      }
+      this.observationsGeoJsonMqtt = evt.data.features;
+
+      /*this.observationsGeoJsonMqtt =  {
         type: "FeatureCollection",
         features: Object.values(evt.data.features)
-      }as any
+      }as any*/
       /*this.observationsGeoJsonMqttConfig =  {
         type: "FeatureCollection",
         features: Object.values(evt.data.configs)
@@ -308,27 +292,8 @@ export default class DatastreamsV extends Vue {
       }
       return datastream;
     }) as Datastream[];
-    /*this.datastreams?.push(
-      {
-        "name": "isConflict",
-        "description": "No description",
-        "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
-        "unitOfMeasurement": {
-          "name": null,
-          "symbol": null,
-          "definition": null
-        },
-        "properties": {},
-        "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(FelsenkellerRadAuto~conflict~conflict)",
-        "@iot.id": "FelsenkellerRadAuto~conflict~conflict",
-        "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(FelsenkellerRadAuto~conflict~isConflict)/Observations",
-        "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(FelsenkellerRadAuto~conflict~isConflict)/ObservedProperty",
-        "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(FelsenkellerRadAuto~conflict~isConflict)/Sensor",
-        "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(FelsenkellerRadAuto~conflict~isConflict)/Thing"
 
-      } as any as Datastream
-    );*/
-      (this.$refs.streamTree as StreamTree).getDatascreamsTree(this.datastreams!.concat([{'@iot.id':'Thing~Traficam~traficam','name':'Traficam'} as unknown as Datastream]),this.things);
+      (this.$refs.streamTree as StreamTree).getDatascreamsTree(this.datastreams,this.things);
       for (let datastream of this.datastreams) {
         //@ts-ignore
         this.datastreamsbyID[datastream["@iot.id"]] = datastream;
@@ -537,6 +502,9 @@ export default class DatastreamsV extends Vue {
     if (this.$route.query.enabledCategories) {
       query['enabledCategories'] = this.$route.query.enabledCategories
     }
+    if(this.$route.query.enabledTraficLights){
+      query['enabledTraficLights'] = this.$route.query.enabledTraficLights
+    }
     if (this.$route.query.coord) {
       query['zoom'] = this.$route.query.zoom
     }
@@ -557,6 +525,9 @@ export default class DatastreamsV extends Vue {
     }
     if (this.$route.query.coord) {
       query['coord'] = this.$route.query.coord
+    }
+    if(this.$route.query.enabledTraficLights){
+      query['enabledTraficLights'] = this.$route.query.enabledTraficLights
     }
     query['zoom'] = zoom
 
@@ -722,12 +693,6 @@ export default class DatastreamsV extends Vue {
 
   SetobservationsGeoJsonMqtt() {
 
-    window.setInterval(()=>{
-      this.observationsGeoJsonMqtt =  {
-        type: "FeatureCollection",
-        features: Object.values(this.$sstore.mqtt.state.features)
-      }as any
-    },conf.renderIntervall)
 
   }
   tooltip =  (feature:any, layer:any)=> {

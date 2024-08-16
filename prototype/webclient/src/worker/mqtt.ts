@@ -51,6 +51,7 @@ self.addEventListener("message", evt => {
       const topic_arr = toptic.split('/');
       const id = topic_arr[topic_arr.length-1];
       const type = topic_arr[topic_arr.length-2];
+      const thing = topic_arr[topic_arr.length-3];
       const msgJ = JSON.parse(msg.toString());
       //console.log(msgJ)
       if(topic_arr[topic_arr.length-1] == 'retained' && topic_arr[topic_arr.length-2] == 'config'){
@@ -107,7 +108,16 @@ self.addEventListener("message", evt => {
       }
 
       if(msgJ.gpsCoordinates && msgJ.gpsCoordinates[0] && msgJ.gpsCoordinates[0].longitude && msgJ.gpsCoordinates[0].latitude && msgJ.speed){
-        state.features[id]={
+        if(!state.features[thing]){
+          state.features[thing] = {
+            type: "FeatureCollection",
+            properties:{
+              thing:thing,
+            },
+            features: {}
+          };
+        }
+        state.features[thing].features[id]={
           "type":"Feature",
           "properties":{
             "type":type,
@@ -115,6 +125,7 @@ self.addEventListener("message", evt => {
             "heading" : msgJ.gpsCoordinates[0].heading,
             "speed" : msgJ.speed,
             "id":id,
+            "thing":thing,
             "classId" : type
           },
           "geometry":{
@@ -143,12 +154,14 @@ self.addEventListener("message", evt => {
   }
 
 const cleanUp=()=>{
-    for (const id in state.features){
+  for (const things in state.features) {
+    for (const id in state.features[things].features) {
 
-      if(state.features[id].properties.inTime + conf.cleanIterval < new Date().getTime()){
-        delete  state.features[id];
+      if (state.features[things].features[id].properties.inTime + conf.cleanIterval < new Date().getTime()) {
+        delete state.features[things][id];
       }
     }
+  }
     //this.state.features = {...this.state.features}
   }
 const setPusher = ()=>{

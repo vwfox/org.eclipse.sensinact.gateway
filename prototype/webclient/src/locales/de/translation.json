@@ -40,6 +40,7 @@
     "modelPackageUri": "Model-URI",
     "temperature":"Temperatur",
     "traficam": "TraficCam",
+    "TrafiCam": "TraficCam",
     "traficam_observedArea": "TraficCam(Viewport)",
     "conflict": "Kollisionswarner",
     "viewport": "Viewport"

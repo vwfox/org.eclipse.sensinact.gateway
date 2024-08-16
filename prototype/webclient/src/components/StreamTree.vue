@@ -172,6 +172,9 @@ export default class StreamTreeC extends Vue {
       if(this.$route.query.zoom){
         query['zoom'] = this.$route.query.zoom
       }
+      if(this.$route.query.enabledTraficLights){
+        query['enabledTraficLights'] = this.$route.query.enabledTraficLights
+      }
 
       query['enabledCategories'] = Object.keys(this.selectedNodesKeys).join(',');
       //query['time'] = Math.random()
