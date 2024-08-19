@@ -1,0 +1,12 @@
+{
+  "INFO_CHECK_URI":null,
+  "INFO_BASE_URI":null,
+  "url": "wss://devel.data-in-motion.biz/ws",
+  "port": 15676,
+  "user": "demo",
+  "password": "1234",
+  "topic":"5g/data/traficam/+/+/+",
+  "cleanIterval": 3000,
+  "renderIntervall": 200,
+  "obsRefreshIntervall": 3000
+}

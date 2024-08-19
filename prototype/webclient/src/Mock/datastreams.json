@@ -1,0 +1,2821 @@
+{
+  "value": [
+    {
+      "name": "color",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN1%2F1~color)",
+      "@iot.id": "K440~BLN1/1~color",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN1%2F1~color)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN1%2F1~color)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN1%2F1~color)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN1%2F1~color)/Thing"
+    },
+    {
+      "name": "signalGroup",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN1%2F1~signalGroup)",
+      "@iot.id": "K440~BLN1/1~signalGroup",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN1%2F1~signalGroup)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN1%2F1~signalGroup)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN1%2F1~signalGroup)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN1%2F1~signalGroup)/Thing"
+    },
+    {
+      "name": "type",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": "Signaltyp",
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {
+        "sensorthings.sensor.metadata": null,
+        "sensorthings.unit.name": "Signaltyp",
+        "timestamp": "2024-04-29T13:09:24.245872459Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN1%2F1~type)",
+      "@iot.id": "K440~BLN1/1~type",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN1%2F1~type)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN1%2F1~type)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN1%2F1~type)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN1%2F1~type)/Thing"
+    },
+    {
+      "name": "color",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN1%2F2~color)",
+      "@iot.id": "K440~BLN1/2~color",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN1%2F2~color)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN1%2F2~color)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN1%2F2~color)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN1%2F2~color)/Thing"
+    },
+    {
+      "name": "signalGroup",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN1%2F2~signalGroup)",
+      "@iot.id": "K440~BLN1/2~signalGroup",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN1%2F2~signalGroup)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN1%2F2~signalGroup)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN1%2F2~signalGroup)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN1%2F2~signalGroup)/Thing"
+    },
+    {
+      "name": "type",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": "Signaltyp",
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {
+        "sensorthings.sensor.metadata": null,
+        "sensorthings.unit.name": "Signaltyp",
+        "timestamp": "2024-04-29T13:09:24.245998715Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN1%2F2~type)",
+      "@iot.id": "K440~BLN1/2~type",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN1%2F2~type)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN1%2F2~type)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN1%2F2~type)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN1%2F2~type)/Thing"
+    },
+    {
+      "name": "color",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN2%2F1~color)",
+      "@iot.id": "K440~BLN2/1~color",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN2%2F1~color)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN2%2F1~color)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN2%2F1~color)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN2%2F1~color)/Thing"
+    },
+    {
+      "name": "signalGroup",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN2%2F1~signalGroup)",
+      "@iot.id": "K440~BLN2/1~signalGroup",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN2%2F1~signalGroup)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN2%2F1~signalGroup)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN2%2F1~signalGroup)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN2%2F1~signalGroup)/Thing"
+    },
+    {
+      "name": "type",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": "Signaltyp",
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {
+        "sensorthings.sensor.metadata": null,
+        "sensorthings.unit.name": "Signaltyp",
+        "timestamp": "2024-04-29T13:09:24.247913102Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN2%2F1~type)",
+      "@iot.id": "K440~BLN2/1~type",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN2%2F1~type)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN2%2F1~type)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN2%2F1~type)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN2%2F1~type)/Thing"
+    },
+    {
+      "name": "color",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN3%2F1~color)",
+      "@iot.id": "K440~BLN3/1~color",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN3%2F1~color)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN3%2F1~color)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN3%2F1~color)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN3%2F1~color)/Thing"
+    },
+    {
+      "name": "signalGroup",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN3%2F1~signalGroup)",
+      "@iot.id": "K440~BLN3/1~signalGroup",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN3%2F1~signalGroup)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN3%2F1~signalGroup)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN3%2F1~signalGroup)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN3%2F1~signalGroup)/Thing"
+    },
+    {
+      "name": "type",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": "Signaltyp",
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {
+        "sensorthings.sensor.metadata": null,
+        "sensorthings.unit.name": "Signaltyp",
+        "timestamp": "2024-04-29T13:09:24.247087945Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN3%2F1~type)",
+      "@iot.id": "K440~BLN3/1~type",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN3%2F1~type)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN3%2F1~type)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN3%2F1~type)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN3%2F1~type)/Thing"
+    },
+    {
+      "name": "color",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN3%2F2~color)",
+      "@iot.id": "K440~BLN3/2~color",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN3%2F2~color)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN3%2F2~color)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN3%2F2~color)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN3%2F2~color)/Thing"
+    },
+    {
+      "name": "signalGroup",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN3%2F2~signalGroup)",
+      "@iot.id": "K440~BLN3/2~signalGroup",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN3%2F2~signalGroup)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN3%2F2~signalGroup)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN3%2F2~signalGroup)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN3%2F2~signalGroup)/Thing"
+    },
+    {
+      "name": "type",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": "Signaltyp",
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {
+        "sensorthings.sensor.metadata": null,
+        "sensorthings.unit.name": "Signaltyp",
+        "timestamp": "2024-04-29T13:09:24.247163955Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN3%2F2~type)",
+      "@iot.id": "K440~BLN3/2~type",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN3%2F2~type)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN3%2F2~type)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN3%2F2~type)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BLN3%2F2~type)/Thing"
+    },
+    {
+      "name": "color",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT1%2F1~color)",
+      "@iot.id": "K440~BT1/1~color",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT1%2F1~color)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT1%2F1~color)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT1%2F1~color)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT1%2F1~color)/Thing"
+    },
+    {
+      "name": "signalGroup",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT1%2F1~signalGroup)",
+      "@iot.id": "K440~BT1/1~signalGroup",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT1%2F1~signalGroup)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT1%2F1~signalGroup)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT1%2F1~signalGroup)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT1%2F1~signalGroup)/Thing"
+    },
+    {
+      "name": "type",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": "Signaltyp",
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {
+        "sensorthings.sensor.metadata": null,
+        "sensorthings.unit.name": "Signaltyp",
+        "timestamp": "2024-04-29T13:09:24.247321394Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT1%2F1~type)",
+      "@iot.id": "K440~BT1/1~type",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT1%2F1~type)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT1%2F1~type)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT1%2F1~type)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT1%2F1~type)/Thing"
+    },
+    {
+      "name": "color",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT1%2F2~color)",
+      "@iot.id": "K440~BT1/2~color",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT1%2F2~color)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT1%2F2~color)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT1%2F2~color)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT1%2F2~color)/Thing"
+    },
+    {
+      "name": "signalGroup",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT1%2F2~signalGroup)",
+      "@iot.id": "K440~BT1/2~signalGroup",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT1%2F2~signalGroup)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT1%2F2~signalGroup)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT1%2F2~signalGroup)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT1%2F2~signalGroup)/Thing"
+    },
+    {
+      "name": "type",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": "Signaltyp",
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {
+        "sensorthings.sensor.metadata": null,
+        "sensorthings.unit.name": "Signaltyp",
+        "timestamp": "2024-04-29T13:09:24.247462117Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT1%2F2~type)",
+      "@iot.id": "K440~BT1/2~type",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT1%2F2~type)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT1%2F2~type)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT1%2F2~type)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT1%2F2~type)/Thing"
+    },
+    {
+      "name": "color",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT3%2F1~color)",
+      "@iot.id": "K440~BT3/1~color",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT3%2F1~color)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT3%2F1~color)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT3%2F1~color)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT3%2F1~color)/Thing"
+    },
+    {
+      "name": "signalGroup",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT3%2F1~signalGroup)",
+      "@iot.id": "K440~BT3/1~signalGroup",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT3%2F1~signalGroup)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT3%2F1~signalGroup)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT3%2F1~signalGroup)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT3%2F1~signalGroup)/Thing"
+    },
+    {
+      "name": "type",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": "Signaltyp",
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {
+        "sensorthings.sensor.metadata": null,
+        "sensorthings.unit.name": "Signaltyp",
+        "timestamp": "2024-04-29T13:09:24.246375812Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT3%2F1~type)",
+      "@iot.id": "K440~BT3/1~type",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT3%2F1~type)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT3%2F1~type)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT3%2F1~type)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT3%2F1~type)/Thing"
+    },
+    {
+      "name": "color",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT3%2F2~color)",
+      "@iot.id": "K440~BT3/2~color",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT3%2F2~color)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT3%2F2~color)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT3%2F2~color)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT3%2F2~color)/Thing"
+    },
+    {
+      "name": "signalGroup",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT3%2F2~signalGroup)",
+      "@iot.id": "K440~BT3/2~signalGroup",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT3%2F2~signalGroup)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT3%2F2~signalGroup)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT3%2F2~signalGroup)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT3%2F2~signalGroup)/Thing"
+    },
+    {
+      "name": "type",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": "Signaltyp",
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {
+        "sensorthings.sensor.metadata": null,
+        "sensorthings.unit.name": "Signaltyp",
+        "timestamp": "2024-04-29T13:09:24.246450823Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT3%2F2~type)",
+      "@iot.id": "K440~BT3/2~type",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT3%2F2~type)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT3%2F2~type)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT3%2F2~type)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~BT3%2F2~type)/Thing"
+    },
+    {
+      "name": "color",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~Bli2~color)",
+      "@iot.id": "K440~Bli2~color",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~Bli2~color)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~Bli2~color)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~Bli2~color)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~Bli2~color)/Thing"
+    },
+    {
+      "name": "signalGroup",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~Bli2~signalGroup)",
+      "@iot.id": "K440~Bli2~signalGroup",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~Bli2~signalGroup)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~Bli2~signalGroup)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~Bli2~signalGroup)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~Bli2~signalGroup)/Thing"
+    },
+    {
+      "name": "type",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": "Signaltyp",
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {
+        "sensorthings.sensor.metadata": null,
+        "sensorthings.unit.name": "Signaltyp",
+        "timestamp": "2024-04-29T13:09:24.247011165Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~Bli2~type)",
+      "@iot.id": "K440~Bli2~type",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~Bli2~type)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~Bli2~type)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~Bli2~type)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~Bli2~type)/Thing"
+    },
+    {
+      "name": "color",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.920928638193146,
+              11.581098596629147
+            ],
+            [
+              50.920888075863616,
+              11.581221083854246
+            ],
+            [
+              50.92091837543839,
+              11.58124744186469
+            ],
+            [
+              50.92096089254997,
+              11.5811203032261
+            ],
+            [
+              50.920928638193146,
+              11.581098596629147
+            ]
+          ]
+        ]
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~F1%2F1~color)",
+      "@iot.id": "K440~F1/1~color",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~F1%2F1~color)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~F1%2F1~color)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~F1%2F1~color)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~F1%2F1~color)/Thing"
+    },
+    {
+      "name": "signalGroup",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.920928638193146,
+              11.581098596629147
+            ],
+            [
+              50.920888075863616,
+              11.581221083854246
+            ],
+            [
+              50.92091837543839,
+              11.58124744186469
+            ],
+            [
+              50.92096089254997,
+              11.5811203032261
+            ],
+            [
+              50.920928638193146,
+              11.581098596629147
+            ]
+          ]
+        ]
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~F1%2F1~signalGroup)",
+      "@iot.id": "K440~F1/1~signalGroup",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~F1%2F1~signalGroup)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~F1%2F1~signalGroup)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~F1%2F1~signalGroup)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~F1%2F1~signalGroup)/Thing"
+    },
+    {
+      "name": "type",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": "Signaltyp",
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.920928638193146,
+              11.581098596629147
+            ],
+            [
+              50.920888075863616,
+              11.581221083854246
+            ],
+            [
+              50.92091837543839,
+              11.58124744186469
+            ],
+            [
+              50.92096089254997,
+              11.5811203032261
+            ],
+            [
+              50.920928638193146,
+              11.581098596629147
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "sensorthings.sensor.metadata": null,
+        "sensorthings.unit.name": "Signaltyp",
+        "timestamp": "2024-04-29T13:09:24.245584744Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~F1%2F1~type)",
+      "@iot.id": "K440~F1/1~type",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~F1%2F1~type)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~F1%2F1~type)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~F1%2F1~type)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~F1%2F1~type)/Thing"
+    },
+    {
+      "name": "color",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.920928638193146,
+              11.581098596629147
+            ],
+            [
+              50.920888075863616,
+              11.581221083854246
+            ],
+            [
+              50.92091837543839,
+              11.58124744186469
+            ],
+            [
+              50.92096089254997,
+              11.5811203032261
+            ],
+            [
+              50.920928638193146,
+              11.581098596629147
+            ]
+          ]
+        ]
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~F1%2F2~color)",
+      "@iot.id": "K440~F1/2~color",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~F1%2F2~color)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~F1%2F2~color)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~F1%2F2~color)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~F1%2F2~color)/Thing"
+    },
+    {
+      "name": "signalGroup",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.920928638193146,
+              11.581098596629147
+            ],
+            [
+              50.920888075863616,
+              11.581221083854246
+            ],
+            [
+              50.92091837543839,
+              11.58124744186469
+            ],
+            [
+              50.92096089254997,
+              11.5811203032261
+            ],
+            [
+              50.920928638193146,
+              11.581098596629147
+            ]
+          ]
+        ]
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~F1%2F2~signalGroup)",
+      "@iot.id": "K440~F1/2~signalGroup",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~F1%2F2~signalGroup)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~F1%2F2~signalGroup)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~F1%2F2~signalGroup)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~F1%2F2~signalGroup)/Thing"
+    },
+    {
+      "name": "type",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": "Signaltyp",
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.920928638193146,
+              11.581098596629147
+            ],
+            [
+              50.920888075863616,
+              11.581221083854246
+            ],
+            [
+              50.92091837543839,
+              11.58124744186469
+            ],
+            [
+              50.92096089254997,
+              11.5811203032261
+            ],
+            [
+              50.920928638193146,
+              11.581098596629147
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "sensorthings.sensor.metadata": null,
+        "sensorthings.unit.name": "Signaltyp",
+        "timestamp": "2024-04-29T13:09:24.245692535Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~F1%2F2~type)",
+      "@iot.id": "K440~F1/2~type",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~F1%2F2~type)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~F1%2F2~type)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~F1%2F2~type)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~F1%2F2~type)/Thing"
+    },
+    {
+      "name": "color",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT1%2F1~color)",
+      "@iot.id": "K440~HT1/1~color",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT1%2F1~color)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT1%2F1~color)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT1%2F1~color)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT1%2F1~color)/Thing"
+    },
+    {
+      "name": "signalGroup",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT1%2F1~signalGroup)",
+      "@iot.id": "K440~HT1/1~signalGroup",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT1%2F1~signalGroup)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT1%2F1~signalGroup)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT1%2F1~signalGroup)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT1%2F1~signalGroup)/Thing"
+    },
+    {
+      "name": "type",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": "Signaltyp",
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {
+        "sensorthings.sensor.metadata": null,
+        "sensorthings.unit.name": "Signaltyp",
+        "timestamp": "2024-04-29T13:09:24.248256042Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT1%2F1~type)",
+      "@iot.id": "K440~HT1/1~type",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT1%2F1~type)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT1%2F1~type)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT1%2F1~type)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT1%2F1~type)/Thing"
+    },
+    {
+      "name": "color",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT1%2F2~color)",
+      "@iot.id": "K440~HT1/2~color",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT1%2F2~color)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT1%2F2~color)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT1%2F2~color)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT1%2F2~color)/Thing"
+    },
+    {
+      "name": "signalGroup",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT1%2F2~signalGroup)",
+      "@iot.id": "K440~HT1/2~signalGroup",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT1%2F2~signalGroup)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT1%2F2~signalGroup)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT1%2F2~signalGroup)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT1%2F2~signalGroup)/Thing"
+    },
+    {
+      "name": "type",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": "Signaltyp",
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {
+        "sensorthings.sensor.metadata": null,
+        "sensorthings.unit.name": "Signaltyp",
+        "timestamp": "2024-04-29T13:09:24.248351685Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT1%2F2~type)",
+      "@iot.id": "K440~HT1/2~type",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT1%2F2~type)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT1%2F2~type)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT1%2F2~type)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT1%2F2~type)/Thing"
+    },
+    {
+      "name": "color",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT3%2F1~color)",
+      "@iot.id": "K440~HT3/1~color",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT3%2F1~color)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT3%2F1~color)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT3%2F1~color)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT3%2F1~color)/Thing"
+    },
+    {
+      "name": "signalGroup",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT3%2F1~signalGroup)",
+      "@iot.id": "K440~HT3/1~signalGroup",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT3%2F1~signalGroup)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT3%2F1~signalGroup)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT3%2F1~signalGroup)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT3%2F1~signalGroup)/Thing"
+    },
+    {
+      "name": "type",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": "Signaltyp",
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {
+        "sensorthings.sensor.metadata": null,
+        "sensorthings.unit.name": "Signaltyp",
+        "timestamp": "2024-04-29T13:09:24.246690881Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT3%2F1~type)",
+      "@iot.id": "K440~HT3/1~type",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT3%2F1~type)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT3%2F1~type)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT3%2F1~type)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT3%2F1~type)/Thing"
+    },
+    {
+      "name": "color",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT3%2F2~color)",
+      "@iot.id": "K440~HT3/2~color",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT3%2F2~color)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT3%2F2~color)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT3%2F2~color)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT3%2F2~color)/Thing"
+    },
+    {
+      "name": "signalGroup",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT3%2F2~signalGroup)",
+      "@iot.id": "K440~HT3/2~signalGroup",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT3%2F2~signalGroup)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT3%2F2~signalGroup)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT3%2F2~signalGroup)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT3%2F2~signalGroup)/Thing"
+    },
+    {
+      "name": "type",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": "Signaltyp",
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {
+        "sensorthings.sensor.metadata": null,
+        "sensorthings.unit.name": "Signaltyp",
+        "timestamp": "2024-04-29T13:09:24.246763966Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT3%2F2~type)",
+      "@iot.id": "K440~HT3/2~type",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT3%2F2~type)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT3%2F2~type)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT3%2F2~type)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~HT3%2F2~type)/Thing"
+    },
+    {
+      "name": "color",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.92088465493745,
+              11.581172244021019
+            ],
+            [
+              50.92061489009322,
+              11.580962930409413
+            ],
+            [
+              50.920604627269256,
+              11.581001692189915
+            ],
+            [
+              50.920704811881905,
+              11.58107223862865
+            ],
+            [
+              50.92087145995427,
+              11.581209455329883
+            ],
+            [
+              50.92088465493745,
+              11.581172244021019
+            ]
+          ]
+        ]
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K1%2F1~color)",
+      "@iot.id": "K440~K1/1~color",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K1%2F1~color)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K1%2F1~color)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K1%2F1~color)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K1%2F1~color)/Thing"
+    },
+    {
+      "name": "signalGroup",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.92088465493745,
+              11.581172244021019
+            ],
+            [
+              50.92061489009322,
+              11.580962930409413
+            ],
+            [
+              50.920604627269256,
+              11.581001692189915
+            ],
+            [
+              50.920704811881905,
+              11.58107223862865
+            ],
+            [
+              50.92087145995427,
+              11.581209455329883
+            ],
+            [
+              50.92088465493745,
+              11.581172244021019
+            ]
+          ]
+        ]
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K1%2F1~signalGroup)",
+      "@iot.id": "K440~K1/1~signalGroup",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K1%2F1~signalGroup)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K1%2F1~signalGroup)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K1%2F1~signalGroup)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K1%2F1~signalGroup)/Thing"
+    },
+    {
+      "name": "type",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": "Signaltyp",
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.92088465493745,
+              11.581172244021019
+            ],
+            [
+              50.92061489009322,
+              11.580962930409413
+            ],
+            [
+              50.920604627269256,
+              11.581001692189915
+            ],
+            [
+              50.920704811881905,
+              11.58107223862865
+            ],
+            [
+              50.92087145995427,
+              11.581209455329883
+            ],
+            [
+              50.92088465493745,
+              11.581172244021019
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "sensorthings.sensor.metadata": null,
+        "sensorthings.unit.name": "Signaltyp",
+        "timestamp": "2024-04-29T13:09:24.248428590Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K1%2F1~type)",
+      "@iot.id": "K440~K1/1~type",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K1%2F1~type)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K1%2F1~type)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K1%2F1~type)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K1%2F1~type)/Thing"
+    },
+    {
+      "name": "color",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.92088465493745,
+              11.581172244021019
+            ],
+            [
+              50.92061489009322,
+              11.580962930409413
+            ],
+            [
+              50.920604627269256,
+              11.581001692189915
+            ],
+            [
+              50.920704811881905,
+              11.58107223862865
+            ],
+            [
+              50.92087145995427,
+              11.581209455329883
+            ],
+            [
+              50.92088465493745,
+              11.581172244021019
+            ]
+          ]
+        ]
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K1%2F2~color)",
+      "@iot.id": "K440~K1/2~color",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K1%2F2~color)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K1%2F2~color)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K1%2F2~color)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K1%2F2~color)/Thing"
+    },
+    {
+      "name": "signalGroup",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.92088465493745,
+              11.581172244021019
+            ],
+            [
+              50.92061489009322,
+              11.580962930409413
+            ],
+            [
+              50.920604627269256,
+              11.581001692189915
+            ],
+            [
+              50.920704811881905,
+              11.58107223862865
+            ],
+            [
+              50.92087145995427,
+              11.581209455329883
+            ],
+            [
+              50.92088465493745,
+              11.581172244021019
+            ]
+          ]
+        ]
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K1%2F2~signalGroup)",
+      "@iot.id": "K440~K1/2~signalGroup",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K1%2F2~signalGroup)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K1%2F2~signalGroup)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K1%2F2~signalGroup)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K1%2F2~signalGroup)/Thing"
+    },
+    {
+      "name": "type",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": "Signaltyp",
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.92088465493745,
+              11.581172244021019
+            ],
+            [
+              50.92061489009322,
+              11.580962930409413
+            ],
+            [
+              50.920604627269256,
+              11.581001692189915
+            ],
+            [
+              50.920704811881905,
+              11.58107223862865
+            ],
+            [
+              50.92087145995427,
+              11.581209455329883
+            ],
+            [
+              50.92088465493745,
+              11.581172244021019
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "sensorthings.sensor.metadata": null,
+        "sensorthings.unit.name": "Signaltyp",
+        "timestamp": "2024-04-29T13:09:24.248494382Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K1%2F2~type)",
+      "@iot.id": "K440~K1/2~type",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K1%2F2~type)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K1%2F2~type)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K1%2F2~type)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K1%2F2~type)/Thing"
+    },
+    {
+      "name": "color",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.920897849916884,
+              11.58113348224191
+            ],
+            [
+              50.92077029829224,
+              11.581024174022701
+            ],
+            [
+              50.92062808514913,
+              11.580921842922919
+            ],
+            [
+              50.92061537879917,
+              11.580961379939225
+            ],
+            [
+              50.920886121046436,
+              11.581173019256767
+            ],
+            [
+              50.920897849916884,
+              11.58113348224191
+            ]
+          ]
+        ]
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K2%2F2~color)",
+      "@iot.id": "K440~K2/2~color",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K2%2F2~color)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K2%2F2~color)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K2%2F2~color)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K2%2F2~color)/Thing"
+    },
+    {
+      "name": "signalGroup",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.920897849916884,
+              11.58113348224191
+            ],
+            [
+              50.92077029829224,
+              11.581024174022701
+            ],
+            [
+              50.92062808514913,
+              11.580921842922919
+            ],
+            [
+              50.92061537879917,
+              11.580961379939225
+            ],
+            [
+              50.920886121046436,
+              11.581173019256767
+            ],
+            [
+              50.920897849916884,
+              11.58113348224191
+            ]
+          ]
+        ]
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K2%2F2~signalGroup)",
+      "@iot.id": "K440~K2/2~signalGroup",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K2%2F2~signalGroup)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K2%2F2~signalGroup)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K2%2F2~signalGroup)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K2%2F2~signalGroup)/Thing"
+    },
+    {
+      "name": "type",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": "Signaltyp",
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.920897849916884,
+              11.58113348224191
+            ],
+            [
+              50.92077029829224,
+              11.581024174022701
+            ],
+            [
+              50.92062808514913,
+              11.580921842922919
+            ],
+            [
+              50.92061537879917,
+              11.580961379939225
+            ],
+            [
+              50.920886121046436,
+              11.581173019256767
+            ],
+            [
+              50.920897849916884,
+              11.58113348224191
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "sensorthings.sensor.metadata": null,
+        "sensorthings.unit.name": "Signaltyp",
+        "timestamp": "2024-04-29T13:09:24.247240665Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K2%2F2~type)",
+      "@iot.id": "K440~K2/2~type",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K2%2F2~type)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K2%2F2~type)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K2%2F2~type)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K2%2F2~type)/Thing"
+    },
+    {
+      "name": "color",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.9210907716226,
+              11.58111359198287
+            ],
+            [
+              50.92129680139212,
+              11.58049747377666
+            ],
+            [
+              50.921270699698084,
+              11.580469869914992
+            ],
+            [
+              50.92106397376466,
+              11.5810942692801
+            ],
+            [
+              50.9210907716226,
+              11.58111359198287
+            ]
+          ]
+        ]
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K3%2F1~color)",
+      "@iot.id": "K440~K3/1~color",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K3%2F1~color)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K3%2F1~color)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K3%2F1~color)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K3%2F1~color)/Thing"
+    },
+    {
+      "name": "signalGroup",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.9210907716226,
+              11.58111359198287
+            ],
+            [
+              50.92129680139212,
+              11.58049747377666
+            ],
+            [
+              50.921270699698084,
+              11.580469869914992
+            ],
+            [
+              50.92106397376466,
+              11.5810942692801
+            ],
+            [
+              50.9210907716226,
+              11.58111359198287
+            ]
+          ]
+        ]
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K3%2F1~signalGroup)",
+      "@iot.id": "K440~K3/1~signalGroup",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K3%2F1~signalGroup)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K3%2F1~signalGroup)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K3%2F1~signalGroup)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K3%2F1~signalGroup)/Thing"
+    },
+    {
+      "name": "type",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": "Signaltyp",
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.9210907716226,
+              11.58111359198287
+            ],
+            [
+              50.92129680139212,
+              11.58049747377666
+            ],
+            [
+              50.921270699698084,
+              11.580469869914992
+            ],
+            [
+              50.92106397376466,
+              11.5810942692801
+            ],
+            [
+              50.9210907716226,
+              11.58111359198287
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "sensorthings.sensor.metadata": null,
+        "sensorthings.unit.name": "Signaltyp",
+        "timestamp": "2024-04-29T13:09:24.246854105Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K3%2F1~type)",
+      "@iot.id": "K440~K3/1~type",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K3%2F1~type)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K3%2F1~type)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K3%2F1~type)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K3%2F1~type)/Thing"
+    },
+    {
+      "name": "color",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.9210907716226,
+              11.58111359198287
+            ],
+            [
+              50.92129680139212,
+              11.58049747377666
+            ],
+            [
+              50.921270699698084,
+              11.580469869914992
+            ],
+            [
+              50.92106397376466,
+              11.5810942692801
+            ],
+            [
+              50.9210907716226,
+              11.58111359198287
+            ]
+          ]
+        ]
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K3%2F2~color)",
+      "@iot.id": "K440~K3/2~color",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K3%2F2~color)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K3%2F2~color)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K3%2F2~color)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K3%2F2~color)/Thing"
+    },
+    {
+      "name": "signalGroup",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.9210907716226,
+              11.58111359198287
+            ],
+            [
+              50.92129680139212,
+              11.58049747377666
+            ],
+            [
+              50.921270699698084,
+              11.580469869914992
+            ],
+            [
+              50.92106397376466,
+              11.5810942692801
+            ],
+            [
+              50.9210907716226,
+              11.58111359198287
+            ]
+          ]
+        ]
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K3%2F2~signalGroup)",
+      "@iot.id": "K440~K3/2~signalGroup",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K3%2F2~signalGroup)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K3%2F2~signalGroup)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K3%2F2~signalGroup)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K3%2F2~signalGroup)/Thing"
+    },
+    {
+      "name": "type",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": "Signaltyp",
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.9210907716226,
+              11.58111359198287
+            ],
+            [
+              50.92129680139212,
+              11.58049747377666
+            ],
+            [
+              50.921270699698084,
+              11.580469869914992
+            ],
+            [
+              50.92106397376466,
+              11.5810942692801
+            ],
+            [
+              50.9210907716226,
+              11.58111359198287
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "sensorthings.sensor.metadata": null,
+        "sensorthings.unit.name": "Signaltyp",
+        "timestamp": "2024-04-29T13:09:24.246931136Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K3%2F2~type)",
+      "@iot.id": "K440~K3/2~type",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K3%2F2~type)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K3%2F2~type)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K3%2F2~type)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K3%2F2~type)/Thing"
+    },
+    {
+      "name": "color",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.92119925415841,
+              11.581362758845728
+            ],
+            [
+              50.921182149665384,
+              11.581410823453098
+            ],
+            [
+              50.92134146555577,
+              11.581541063033455
+            ],
+            [
+              50.9213561264998,
+              11.581496874603744
+            ],
+            [
+              50.92119925415841,
+              11.581362758845728
+            ]
+          ]
+        ]
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K4%2F1~color)",
+      "@iot.id": "K440~K4/1~color",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K4%2F1~color)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K4%2F1~color)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K4%2F1~color)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K4%2F1~color)/Thing"
+    },
+    {
+      "name": "signalGroup",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.92119925415841,
+              11.581362758845728
+            ],
+            [
+              50.921182149665384,
+              11.581410823453098
+            ],
+            [
+              50.92134146555577,
+              11.581541063033455
+            ],
+            [
+              50.9213561264998,
+              11.581496874603744
+            ],
+            [
+              50.92119925415841,
+              11.581362758845728
+            ]
+          ]
+        ]
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K4%2F1~signalGroup)",
+      "@iot.id": "K440~K4/1~signalGroup",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K4%2F1~signalGroup)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K4%2F1~signalGroup)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K4%2F1~signalGroup)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K4%2F1~signalGroup)/Thing"
+    },
+    {
+      "name": "type",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": "Signaltyp",
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.92119925415841,
+              11.581362758845728
+            ],
+            [
+              50.921182149665384,
+              11.581410823453098
+            ],
+            [
+              50.92134146555577,
+              11.581541063033455
+            ],
+            [
+              50.9213561264998,
+              11.581496874603744
+            ],
+            [
+              50.92119925415841,
+              11.581362758845728
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "sensorthings.sensor.metadata": null,
+        "sensorthings.unit.name": "Signaltyp",
+        "timestamp": "2024-04-29T13:09:24.246100438Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K4%2F1~type)",
+      "@iot.id": "K440~K4/1~type",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K4%2F1~type)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K4%2F1~type)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K4%2F1~type)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K4%2F1~type)/Thing"
+    },
+    {
+      "name": "color",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50,
+              11
+            ],
+            [
+              50,
+              11
+            ],
+            [
+              50,
+              11
+            ],
+            [
+              50,
+              11
+            ],
+            [
+              50,
+              11
+            ]
+          ]
+        ]
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K4%2F2~color)",
+      "@iot.id": "K440~K4/2~color",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K4%2F2~color)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K4%2F2~color)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K4%2F2~color)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K4%2F2~color)/Thing"
+    },
+    {
+      "name": "signalGroup",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50,
+              11
+            ],
+            [
+              50,
+              11
+            ],
+            [
+              50,
+              11
+            ],
+            [
+              50,
+              11
+            ],
+            [
+              50,
+              11
+            ]
+          ]
+        ]
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K4%2F2~signalGroup)",
+      "@iot.id": "K440~K4/2~signalGroup",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K4%2F2~signalGroup)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K4%2F2~signalGroup)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K4%2F2~signalGroup)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K4%2F2~signalGroup)/Thing"
+    },
+    {
+      "name": "type",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": "Signaltyp",
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50,
+              11
+            ],
+            [
+              50,
+              11
+            ],
+            [
+              50,
+              11
+            ],
+            [
+              50,
+              11
+            ],
+            [
+              50,
+              11
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "sensorthings.sensor.metadata": null,
+        "sensorthings.unit.name": "Signaltyp",
+        "timestamp": "2024-04-29T13:09:24.246210302Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K4%2F2~type)",
+      "@iot.id": "K440~K4/2~type",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K4%2F2~type)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K4%2F2~type)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K4%2F2~type)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~K4%2F2~type)/Thing"
+    },
+    {
+      "name": "color",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.92114749250047,
+              11.581174804340378
+            ],
+            [
+              50.92103629166223,
+              11.581092406951655
+            ],
+            [
+              50.921015807268105,
+              11.581132445119607
+            ],
+            [
+              50.92114163983149,
+              11.58123631225098
+            ],
+            [
+              50.92114749250047,
+              11.581174804340378
+            ]
+          ]
+        ]
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF2%2F1~color)",
+      "@iot.id": "K440~RF2/1~color",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF2%2F1~color)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF2%2F1~color)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF2%2F1~color)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF2%2F1~color)/Thing"
+    },
+    {
+      "name": "signalGroup",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.92114749250047,
+              11.581174804340378
+            ],
+            [
+              50.92103629166223,
+              11.581092406951655
+            ],
+            [
+              50.921015807268105,
+              11.581132445119607
+            ],
+            [
+              50.92114163983149,
+              11.58123631225098
+            ],
+            [
+              50.92114749250047,
+              11.581174804340378
+            ]
+          ]
+        ]
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF2%2F1~signalGroup)",
+      "@iot.id": "K440~RF2/1~signalGroup",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF2%2F1~signalGroup)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF2%2F1~signalGroup)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF2%2F1~signalGroup)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF2%2F1~signalGroup)/Thing"
+    },
+    {
+      "name": "type",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": "Signaltyp",
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.92114749250047,
+              11.581174804340378
+            ],
+            [
+              50.92103629166223,
+              11.581092406951655
+            ],
+            [
+              50.921015807268105,
+              11.581132445119607
+            ],
+            [
+              50.92114163983149,
+              11.58123631225098
+            ],
+            [
+              50.92114749250047,
+              11.581174804340378
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "sensorthings.sensor.metadata": null,
+        "sensorthings.unit.name": "Signaltyp",
+        "timestamp": "2024-04-29T13:09:24.246296811Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF2%2F1~type)",
+      "@iot.id": "K440~RF2/1~type",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF2%2F1~type)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF2%2F1~type)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF2%2F1~type)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF2%2F1~type)/Thing"
+    },
+    {
+      "name": "color",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.921183244297964,
+              11.581350041018055
+            ],
+            [
+              50.921157831897375,
+              11.58131050400172
+            ],
+            [
+              50.921121668072885,
+              11.581420587456762
+            ],
+            [
+              50.92115245619581,
+              11.581443069289548
+            ],
+            [
+              50.921183244297964,
+              11.581350041018055
+            ]
+          ]
+        ]
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF3%2F1~color)",
+      "@iot.id": "K440~RF3/1~color",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF3%2F1~color)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF3%2F1~color)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF3%2F1~color)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF3%2F1~color)/Thing"
+    },
+    {
+      "name": "signalGroup",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.921183244297964,
+              11.581350041018055
+            ],
+            [
+              50.921157831897375,
+              11.58131050400172
+            ],
+            [
+              50.921121668072885,
+              11.581420587456762
+            ],
+            [
+              50.92115245619581,
+              11.581443069289548
+            ],
+            [
+              50.921183244297964,
+              11.581350041018055
+            ]
+          ]
+        ]
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF3%2F1~signalGroup)",
+      "@iot.id": "K440~RF3/1~signalGroup",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF3%2F1~signalGroup)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF3%2F1~signalGroup)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF3%2F1~signalGroup)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF3%2F1~signalGroup)/Thing"
+    },
+    {
+      "name": "type",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": "Signaltyp",
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.921183244297964,
+              11.581350041018055
+            ],
+            [
+              50.921157831897375,
+              11.58131050400172
+            ],
+            [
+              50.921121668072885,
+              11.581420587456762
+            ],
+            [
+              50.92115245619581,
+              11.581443069289548
+            ],
+            [
+              50.921183244297964,
+              11.581350041018055
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "sensorthings.sensor.metadata": null,
+        "sensorthings.unit.name": "Signaltyp",
+        "timestamp": "2024-04-29T13:09:24.245364976Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF3%2F1~type)",
+      "@iot.id": "K440~RF3/1~type",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF3%2F1~type)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF3%2F1~type)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF3%2F1~type)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF3%2F1~type)/Thing"
+    },
+    {
+      "name": "color",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.921183244297964,
+              11.581350041018055
+            ],
+            [
+              50.921157831897375,
+              11.58131050400172
+            ],
+            [
+              50.921121668072885,
+              11.581420587456762
+            ],
+            [
+              50.92115245619581,
+              11.581443069289548
+            ],
+            [
+              50.921183244297964,
+              11.581350041018055
+            ]
+          ]
+        ]
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF3%2F2~color)",
+      "@iot.id": "K440~RF3/2~color",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF3%2F2~color)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF3%2F2~color)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF3%2F2~color)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF3%2F2~color)/Thing"
+    },
+    {
+      "name": "signalGroup",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.921183244297964,
+              11.581350041018055
+            ],
+            [
+              50.921157831897375,
+              11.58131050400172
+            ],
+            [
+              50.921121668072885,
+              11.581420587456762
+            ],
+            [
+              50.92115245619581,
+              11.581443069289548
+            ],
+            [
+              50.921183244297964,
+              11.581350041018055
+            ]
+          ]
+        ]
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF3%2F2~signalGroup)",
+      "@iot.id": "K440~RF3/2~signalGroup",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF3%2F2~signalGroup)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF3%2F2~signalGroup)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF3%2F2~signalGroup)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF3%2F2~signalGroup)/Thing"
+    },
+    {
+      "name": "type",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": "Signaltyp",
+        "symbol": null,
+        "definition": null
+      },
+      "observedArea": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.921183244297964,
+              11.581350041018055
+            ],
+            [
+              50.921157831897375,
+              11.58131050400172
+            ],
+            [
+              50.921121668072885,
+              11.581420587456762
+            ],
+            [
+              50.92115245619581,
+              11.581443069289548
+            ],
+            [
+              50.921183244297964,
+              11.581350041018055
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "sensorthings.sensor.metadata": null,
+        "sensorthings.unit.name": "Signaltyp",
+        "timestamp": "2024-04-29T13:09:24.245495554Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF3%2F2~type)",
+      "@iot.id": "K440~RF3/2~type",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF3%2F2~type)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF3%2F2~type)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF3%2F2~type)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~RF3%2F2~type)/Thing"
+    },
+    {
+      "name": "color",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK1%2F1~color)",
+      "@iot.id": "K440~SIK1/1~color",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK1%2F1~color)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK1%2F1~color)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK1%2F1~color)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK1%2F1~color)/Thing"
+    },
+    {
+      "name": "signalGroup",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK1%2F1~signalGroup)",
+      "@iot.id": "K440~SIK1/1~signalGroup",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK1%2F1~signalGroup)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK1%2F1~signalGroup)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK1%2F1~signalGroup)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK1%2F1~signalGroup)/Thing"
+    },
+    {
+      "name": "type",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": "Signaltyp",
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {
+        "sensorthings.sensor.metadata": null,
+        "sensorthings.unit.name": "Signaltyp",
+        "timestamp": "2024-04-29T13:09:24.247542523Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK1%2F1~type)",
+      "@iot.id": "K440~SIK1/1~type",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK1%2F1~type)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK1%2F1~type)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK1%2F1~type)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK1%2F1~type)/Thing"
+    },
+    {
+      "name": "color",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK1%2F2~color)",
+      "@iot.id": "K440~SIK1/2~color",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK1%2F2~color)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK1%2F2~color)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK1%2F2~color)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK1%2F2~color)/Thing"
+    },
+    {
+      "name": "signalGroup",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK1%2F2~signalGroup)",
+      "@iot.id": "K440~SIK1/2~signalGroup",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK1%2F2~signalGroup)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK1%2F2~signalGroup)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK1%2F2~signalGroup)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK1%2F2~signalGroup)/Thing"
+    },
+    {
+      "name": "type",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": "Signaltyp",
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {
+        "sensorthings.sensor.metadata": null,
+        "sensorthings.unit.name": "Signaltyp",
+        "timestamp": "2024-04-29T13:09:24.247647938Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK1%2F2~type)",
+      "@iot.id": "K440~SIK1/2~type",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK1%2F2~type)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK1%2F2~type)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK1%2F2~type)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK1%2F2~type)/Thing"
+    },
+    {
+      "name": "color",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK3%2F1~color)",
+      "@iot.id": "K440~SIK3/1~color",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK3%2F1~color)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK3%2F1~color)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK3%2F1~color)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK3%2F1~color)/Thing"
+    },
+    {
+      "name": "signalGroup",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK3%2F1~signalGroup)",
+      "@iot.id": "K440~SIK3/1~signalGroup",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK3%2F1~signalGroup)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK3%2F1~signalGroup)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK3%2F1~signalGroup)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK3%2F1~signalGroup)/Thing"
+    },
+    {
+      "name": "type",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": "Signaltyp",
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {
+        "sensorthings.sensor.metadata": null,
+        "sensorthings.unit.name": "Signaltyp",
+        "timestamp": "2024-04-29T13:09:24.246525406Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK3%2F1~type)",
+      "@iot.id": "K440~SIK3/1~type",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK3%2F1~type)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK3%2F1~type)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK3%2F1~type)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK3%2F1~type)/Thing"
+    },
+    {
+      "name": "color",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK3%2F2~color)",
+      "@iot.id": "K440~SIK3/2~color",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK3%2F2~color)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK3%2F2~color)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK3%2F2~color)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK3%2F2~color)/Thing"
+    },
+    {
+      "name": "signalGroup",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK3%2F2~signalGroup)",
+      "@iot.id": "K440~SIK3/2~signalGroup",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK3%2F2~signalGroup)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK3%2F2~signalGroup)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK3%2F2~signalGroup)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK3%2F2~signalGroup)/Thing"
+    },
+    {
+      "name": "type",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": "Signaltyp",
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {
+        "sensorthings.sensor.metadata": null,
+        "sensorthings.unit.name": "Signaltyp",
+        "timestamp": "2024-04-29T13:09:24.246601095Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK3%2F2~type)",
+      "@iot.id": "K440~SIK3/2~type",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK3%2F2~type)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK3%2F2~type)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK3%2F2~type)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~SIK3%2F2~type)/Thing"
+    },
+    {
+      "name": "friendlyName",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {
+        "timestamp": "2024-04-29T13:14:43.641536066Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~admin~friendlyName)",
+      "@iot.id": "K440~admin~friendlyName",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~admin~friendlyName)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~admin~friendlyName)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~admin~friendlyName)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~admin~friendlyName)/Thing"
+    },
+    {
+      "name": "location",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~admin~location)",
+      "@iot.id": "K440~admin~location",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~admin~location)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~admin~location)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~admin~location)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~admin~location)/Thing"
+    },
+    {
+      "name": "model",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {
+        "timestamp": "2024-04-29T13:09:24.233979494Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~admin~model)",
+      "@iot.id": "K440~admin~model",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~admin~model)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~admin~model)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~admin~model)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~admin~model)/Thing"
+    },
+    {
+      "name": "modelPackageUri",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {
+        "timestamp": "2024-04-29T13:09:24.233979494Z"
+      },
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~admin~modelPackageUri)",
+      "@iot.id": "K440~admin~modelPackageUri",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~admin~modelPackageUri)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~admin~modelPackageUri)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~admin~modelPackageUri)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~admin~modelPackageUri)/Thing"
+    },
+    {
+      "name": "friendlyName",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~thermal~friendlyName)",
+      "@iot.id": "K440~thermal~friendlyName",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~thermal~friendlyName)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~thermal~friendlyName)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~thermal~friendlyName)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~thermal~friendlyName)/Thing"
+    },
+    {
+      "name": "location",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~thermal~location)",
+      "@iot.id": "K440~thermal~location",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~thermal~location)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~thermal~location)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~thermal~location)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~thermal~location)/Thing"
+    },
+    {
+      "name": "model",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~thermal~model)",
+      "@iot.id": "K440~thermal~model",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~thermal~model)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~thermal~model)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~thermal~model)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~thermal~model)/Thing"
+    },
+    {
+      "name": "modelPackageUri",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~thermal~modelPackageUri)",
+      "@iot.id": "K440~thermal~modelPackageUri",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~thermal~modelPackageUri)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~thermal~modelPackageUri)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~thermal~modelPackageUri)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~thermal~modelPackageUri)/Thing"
+    },
+    {
+      "name": "temperature",
+      "description": "No description",
+      "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Observation",
+      "unitOfMeasurement": {
+        "name": null,
+        "symbol": null,
+        "definition": null
+      },
+      "properties": {},
+      "@iot.selfLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~thermal~temperature)",
+      "@iot.id": "K440~thermal~temperature",
+      "Observations@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~thermal~temperature)/Observations",
+      "ObservedProperty@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~thermal~temperature)/ObservedProperty",
+      "Sensor@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~thermal~temperature)/Sensor",
+      "Thing@iot.navigationLink": "http://localhost:8080/sensinact/rest/v1.1/Datastreams(K440~thermal~temperature)/Thing"
+    }
+  ]
+}

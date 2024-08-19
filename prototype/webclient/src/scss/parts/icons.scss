@@ -1,0 +1,36 @@
+/*********************************************************************
+ * Copyright (c) 2023 Contributors to the Eclipse Foundation.
+ *
+ * This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License 2.0
+ * which is available at https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *
+ * Contributors:
+ *   Markus Hochstein
+ **********************************************************************/
+
+.svg_icon{
+    background-color: #a5a5a5;
+
+
+    &.CO{
+      mask-image:url('@/assets/icons/sensors/co.svg')
+    }
+    &.NO{
+      mask-image:url('@/assets/icons/sensors/no.svg')
+    }
+
+    &.O3{
+      mask-image:url('@/assets/icons/sensors/o3.svg')
+    }
+
+    &.NO2{
+      mask-image:url('@/assets/icons/sensors/no2.svg')
+    }
+
+}
+.svg_icon2{
+  padding: 5px;
+}

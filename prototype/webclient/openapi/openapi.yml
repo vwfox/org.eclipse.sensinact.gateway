@@ -1478,28 +1478,28 @@ components:
           description: The Id of the datastream
         "@iot.selfLink":
           $ref: "#/components/schemas/selfLink"
-        #        Observations:
-        #          type: array
-        #          items:
-        #            $ref: "#/components/schemas/Observation"
-        #        Observations@iot.count:
-        #          $ref: "#/components/schemas/count"
-        #        Observations@iot.navigationLink:
-        #          $ref: "#/components/schemas/navigationLink"
-        #        Observations@iot.nextLink:
-        #          $ref: "#/components/schemas/nextLink"
-        #        ObservedProperty:
-        #          $ref: "#/components/schemas/ObservedProperty"
-        #        ObservedProperty@iot.navigationLink:
-        #          $ref: "#/components/schemas/navigationLink"
-        #        Sensor:
-        #          $ref: "#/components/schemas/Sensor"
-        #        Sensor@iot.navigationLink:
-        #          $ref: "#/components/schemas/navigationLink"
-        #        Thing:
-        #          $ref: "#/components/schemas/Thing"
-        #        Thing@iot.navigationLink:
-        #          $ref: "#/components/schemas/navigationLink"
+        Observations:
+          type: array
+          items:
+            $ref: "#/components/schemas/Observation"
+        Observations@iot.count:
+          $ref: "#/components/schemas/count"
+        Observations@iot.navigationLink:
+          $ref: "#/components/schemas/navigationLink"
+        Observations@iot.nextLink:
+          $ref: "#/components/schemas/nextLink"
+        ObservedProperty:
+          $ref: "#/components/schemas/ObservedProperty"
+        ObservedProperty@iot.navigationLink:
+          $ref: "#/components/schemas/navigationLink"
+        Sensor:
+          $ref: "#/components/schemas/Sensor"
+        Sensor@iot.navigationLink:
+          $ref: "#/components/schemas/navigationLink"
+        Thing:
+          $ref: "#/components/schemas/Thing"
+        Thing@iot.navigationLink:
+          $ref: "#/components/schemas/navigationLink"
         description:
           type: string
           description: A description of the datastream
@@ -1694,16 +1694,16 @@ components:
         #          $ref: "#/components/schemas/navigationLink"
         #        HistoricalLocations@iot.nextLink:
         #          $ref: "#/components/schemas/nextLink"
-        #        Things:
-        #          type: array
-        #          items:
-        #            $ref: "#/components/schemas/Thing"
-        #        Things@iot.count:
-        #          $ref: "#/components/schemas/count"
-        #        Things@iot.navigationLink:
-        #          $ref: "#/components/schemas/navigationLink"
-        #        Things@iot.nextLink:
-        #          $ref: "#/components/schemas/nextLink"
+        Things:
+          type: array
+          items:
+            $ref: "#/components/schemas/Thing"
+        Things@iot.count:
+          $ref: "#/components/schemas/count"
+        Things@iot.navigationLink:
+          $ref: "#/components/schemas/navigationLink"
+        Things@iot.nextLink:
+          $ref: "#/components/schemas/nextLink"
         description:
           type: string
           description: A description of the location
@@ -2079,60 +2079,60 @@ components:
       type: object
       properties:
         "@iot.id":
-          type: integer
+          type: string
           description: The Id of the thing
         "@iot.selfLink":
           $ref: "#/components/schemas/selfLink"
-        #        Datastreams:
-        #          type: array
-        #          items:
-        #            $ref: "#/components/schemas/Datastream"
-        #        Datastreams@iot.count:
-        #          $ref: "#/components/schemas/count"
-        #        Datastreams@iot.navigationLink:
-        #          $ref: "#/components/schemas/navigationLink"
-        #        Datastreams@iot.nextLink:
-        #          $ref: "#/components/schemas/nextLink"
-        #        HistoricalLocations:
-        #          type: array
-        #          items:
-        #            $ref: "#/components/schemas/HistoricalLocation"
-        #        HistoricalLocations@iot.count:
-        #          $ref: "#/components/schemas/count"
-        #        HistoricalLocations@iot.navigationLink:
-        #          $ref: "#/components/schemas/navigationLink"
-        #        HistoricalLocations@iot.nextLink:
-        #          $ref: "#/components/schemas/nextLink"
-        #        Locations:
-        #          type: array
-        #          items:
-        #            $ref: "#/components/schemas/Location"
-        #        Locations@iot.count:
-        #          $ref: "#/components/schemas/count"
-        #        Locations@iot.navigationLink:
-        #          $ref: "#/components/schemas/navigationLink"
-        #        Locations@iot.nextLink:
-        #          $ref: "#/components/schemas/nextLink"
-        #        MultiDatastreams:
-        #          type: array
-        #          items:
-        #            $ref: "#/components/schemas/MultiDatastream"
-        #        MultiDatastreams@iot.count:
-        #          $ref: "#/components/schemas/count"
-        #        MultiDatastreams@iot.navigationLink:
-        #          $ref: "#/components/schemas/navigationLink"
-        #        MultiDatastreams@iot.nextLink:
-        #          $ref: "#/components/schemas/nextLink"
-        #        TaskingCapabilities:
-        #          type: array
-        #          items:
-        #            $ref: "#/components/schemas/TaskingCapability"
-        #        TaskingCapabilities@iot.count:
-        #          $ref: "#/components/schemas/count"
-        #        TaskingCapabilities@iot.navigationLink:
-        #          $ref: "#/components/schemas/navigationLink"
-        #        TaskingCapabilities@iot.nextLink:
-        #          $ref: "#/components/schemas/nextLink"
+        Datastreams:
+          type: array
+          items:
+            $ref: "#/components/schemas/Datastream"
+        Datastreams@iot.count:
+          $ref: "#/components/schemas/count"
+        Datastreams@iot.navigationLink:
+          $ref: "#/components/schemas/navigationLink"
+        Datastreams@iot.nextLink:
+          $ref: "#/components/schemas/nextLink"
+        #HistoricalLocations:
+        #  type: array
+        #  items:
+        #    $ref: "#/components/schemas/HistoricalLocation"
+        HistoricalLocations@iot.count:
+          $ref: "#/components/schemas/count"
+        HistoricalLocations@iot.navigationLink:
+          $ref: "#/components/schemas/navigationLink"
+        HistoricalLocations@iot.nextLink:
+          $ref: "#/components/schemas/nextLink"
+        Locations:
+          type: array
+          items:
+            $ref: "#/components/schemas/Location"
+        Locations@iot.count:
+          $ref: "#/components/schemas/count"
+        Locations@iot.navigationLink:
+          $ref: "#/components/schemas/navigationLink"
+        Locations@iot.nextLink:
+          $ref: "#/components/schemas/nextLink"
+        #MultiDatastreams:
+        #  type: array
+        #  items:
+        #    $ref: "#/components/schemas/MultiDatastream"
+        MultiDatastreams@iot.count:
+          $ref: "#/components/schemas/count"
+        MultiDatastreams@iot.navigationLink:
+          $ref: "#/components/schemas/navigationLink"
+        MultiDatastreams@iot.nextLink:
+          $ref: "#/components/schemas/nextLink"
+        #TaskingCapabilities:
+        #  type: array
+        #  items:
+        #    $ref: "#/components/schemas/TaskingCapability"
+        TaskingCapabilities@iot.count:
+          $ref: "#/components/schemas/count"
+        TaskingCapabilities@iot.navigationLink:
+          $ref: "#/components/schemas/navigationLink"
+        TaskingCapabilities@iot.nextLink:
+          $ref: "#/components/schemas/nextLink"
         description:
           type: string
           description: A description of the thing
@@ -2216,7 +2216,7 @@ components:
       description: The id of the requested entity
       required: true
       schema:
-        type: integer
+        type: string
     expand:
       name: $expand
       in: query

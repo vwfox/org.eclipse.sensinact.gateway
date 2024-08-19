@@ -1,0 +1,29 @@
+{
+  "INFO_CHECK_URI":null,
+  "INFO_BASE_URI":null,
+  "url": "wss://devel.data-in-motion.biz/ws",
+  "port": 15676,
+  "user": "demo",
+  "password": "",
+  "topic":["5g/data/traficam/+/+/+","5g/data/config/traficam/+/retained"],
+  "cleanIterval": 3000,
+  "renderIntervall": 500,
+  "obsRefreshIntervall": 2000,
+  "DatastreamExclude": [
+    "modelPackageUri",
+    "temperature",
+    "modelPackageUri",
+    "model",
+    "location",
+    "type",
+    "signalGroup",
+    "friendlyName",
+    "objects",
+    "observedArea",
+    "started",
+    "version",
+    "classification",
+    "classificationName",
+    "bikeId"
+  ]
+}
