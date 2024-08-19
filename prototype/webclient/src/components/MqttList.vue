@@ -49,7 +49,7 @@ export default class MqttList extends Vue {
     if(items){
       items.active = !o.active;
     }
-    const enabledTraficLights = this.listItems?.filter(e=>e.active).map(e=>e.name).join(',');
+    const enabledTraficLights = this.listItems?.filter(e=>e.active).map(e=>e.cat+'_'+e.name).join(',');
     //query['time'] = Math.random()
     const query = {...this.$route.query};
     query['enabledTraficLights'] =enabledTraficLights;

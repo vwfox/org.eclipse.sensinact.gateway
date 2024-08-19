@@ -54,9 +54,18 @@ self.addEventListener("message", evt => {
       const thing = topic_arr[topic_arr.length-3];
       const msgJ = JSON.parse(msg.toString());
       //console.log(msgJ)
-      if(topic_arr[topic_arr.length-1] == 'retained' && topic_arr[topic_arr.length-2] == 'config'){
+      if(topic_arr[topic_arr.length-1] == 'retained' && topic_arr[topic_arr.length-4] == 'config'){
         if(msgJ.scene && msgJ.scene.leftTop.longitude && msgJ.scene.leftTop.latitude){
-          state.configs[topic_arr[topic_arr.length-3]]={
+          if(!state.configs[type]){
+            state.configs[type] = {
+              type: "FeatureCollection",
+              properties:{
+                thing:type,
+              },
+              features: {}
+            };
+          }
+          state.configs[type].features[type]={
             "type":"Feature",
               "properties":{
               "type":type,

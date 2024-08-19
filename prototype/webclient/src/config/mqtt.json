@@ -5,7 +5,7 @@
   "port": 15676,
   "user": "demo",
   "password": "",
-  "topic":"5g/data/traficam/+/+/+",
+  "topic":["5g/data/traficam/+/+/+","5g/data/config/traficam/+/retained"],
   "cleanIterval": 3000,
   "renderIntervall": 500,
   "obsRefreshIntervall": 2000,

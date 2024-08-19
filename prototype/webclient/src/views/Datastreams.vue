@@ -31,11 +31,17 @@
         <l-tile-layer :url="url" :attribution="attribution" :options="{maxNativeZoom:19,
         maxZoom:25}"></l-tile-layer>
 
+        <template  v-for="(viewport,key) in viewports">
+        <l-geo-json  :geojson="viewport" :options="{'pointToLayer':pointToLayer}" v-bind:key="key"
+                     :options-style="styleP"
+                     v-if=" $route.query.enabledTraficLights && $route.query.enabledTraficLights.includes('ViewPort_'+key.toString())"
+                     ></l-geo-json>
+        </template>
 
         <template  v-for="(geoJsonTragicLight,key) in observationsGeoJsonMqtt">
           <l-geo-json  :geojson="geoJsonTragicLight" :options="{'pointToLayer':pointToLayer}" v-bind:key="key"
                        :options-style="styleP"
-                       v-if=" $route.query.enabledTraficLights && $route.query.enabledTraficLights.includes(key.toString())"></l-geo-json>
+                       v-if=" $route.query.enabledTraficLights && $route.query.enabledTraficLights.includes('TrafiCam_'+key.toString())"></l-geo-json>
         </template>
 
 
@@ -191,9 +197,10 @@ export default class DatastreamsV extends Vue {
   private mqtt: Worker | null = null;
   campoints = null;
   observationsGeoJsonMqtt = null;
+  viewports = null;
   observationsGeoJsonMqttConfig = null;
   private mqttmenu = {};
-  private mqtt_items = [];
+  private mqtt_items = {};
   async mounted() {
 
     this.mqtt = new Worker(new URL("@/worker/mqtt.ts", import.meta.url));
@@ -209,12 +216,19 @@ export default class DatastreamsV extends Vue {
         }
       })*/
       Object.keys(evt.data.features).forEach((r:any)=>{
-        MqttItems.push({name:r,id:r,cat:'TrafiCam',active:false})
+        MqttItems.push({name:r,id:'TrafiCam_'+r,cat:'TrafiCam',active:false})
+      })
+      Object.keys(evt.data.configs).forEach((r:any)=>{
+        MqttItems.push({name:r,id:'ViewPort_'+r,cat:'ViewPort',active:false})
       })
       this.mqtt_items = MqttItems;
       for( const [key, value] of Object.entries(evt.data.features)){
         evt.data.features[key].features = Object.values(evt.data.features[key].features);
       }
+      for( const [key, value] of Object.entries(evt.data.configs)){
+        evt.data.configs[key].features = Object.values(evt.data.configs[key].features);
+      }
+      this.viewports = evt.data.configs;
       this.observationsGeoJsonMqtt = evt.data.features;
 
       /*this.observationsGeoJsonMqtt =  {
